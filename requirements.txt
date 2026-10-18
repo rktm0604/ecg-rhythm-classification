@@ -1,0 +1,7 @@
+wfdb
+numpy
+scikit-learn
+matplotlib
+fastapi
+uvicorn
+joblib
