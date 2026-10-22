@@ -1,49 +1,108 @@
-# ECG Rhythm Classification Using Machine Learning
+<div align="center">
 
-A small-scale prototype that classifies ECG heartbeats as **Normal** or **Abnormal** with a Random Forest, and serves predictions through a FastAPI backend. Built as a combined AI/ML and Software Engineering course project.
+# ECG Rhythm Classification
 
-> **Status:** working prototype on a subset of the MIT-BIH Arrhythmia Database. It is not a medical device and must not be used for clinical decisions.
+**Machine-learning heartbeat classifier with a REST API, trained on real MIT-BIH ECG recordings.**
+
+![Python](https://img.shields.io/badge/python-3.9%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Status](https://img.shields.io/badge/status-prototype-orange)
+![Test accuracy](https://img.shields.io/badge/test%20accuracy-95.2%25-brightgreen)
+![Abnormal recall](https://img.shields.io/badge/abnormal%20recall-94.0%25-brightgreen)
+
+</div>
 
 ---
 
-## 1. Problem
+## What is this?
 
-Manual ECG review is slow, needs trained specialists, and does not scale with growing monitoring data. Rare but dangerous rhythm abnormalities are the easiest to miss. This project explores whether a machine learning model can classify heartbeats automatically from ECG features to support faster, more consistent screening.
+Doctors check ECGs for dangerous heart-rhythm abnormalities, but reviewing thousands of heartbeats by hand is slow and tiring. This project trains a model that looks at each heartbeat and labels it **Normal** or **Abnormal**, then exposes that model through a small web API anyone can call.
 
-## 2. Approach
+It was built for a combined **AI/ML + Software Engineering** course. It is a **small-scale prototype**, and the sections below are explicit about what it does and does not do.
 
-- **AI approach:** supervised learning (labeled beats, classification).
-- **Model:** Random Forest (100 trees, `class_weight="balanced"`, `random_state=42`).
-- **Task:** binary classification, **Normal (0)** vs **Abnormal (1)**.
-- **Backend:** FastAPI service that loads the saved model and returns a class with a confidence score.
+> **Not a medical device.** This is an academic proof-of-concept and must not be used for diagnosis or treatment.
 
-## 3. Dataset
+## Results at a glance
 
-**MIT-BIH Arrhythmia Database** (PhysioNet): https://physionet.org/content/mitdb/
+Tested on **7,669 heartbeats from 3 patient recordings the model never saw during training.**
 
-- 48 half-hour, two-channel ambulatory ECG recordings from 47 subjects, sampled at 360 Hz.
-- Beat-by-beat annotations by cardiologists; recordings collected 1975-1979, database released in 1980.
-- Data is downloaded automatically by the `wfdb` library when `train.py` runs. No data files are stored in this repo.
-
-### Label mapping (2 classes)
-
-| Class | MIT-BIH beat symbols used |
+| Metric | Value |
 |---|---|
-| Normal (0) | `N`, `L`, `R`, `e`, `j` |
-| Abnormal (1) | `A`, `a`, `J`, `S`, `V`, `E`, `F` |
+| **Accuracy** | **95.2%** |
+| **Abnormal recall** (abnormal beats caught) | **94.0%** (1,391 of 1,480) |
+| **Abnormal precision** (alerts that were right) | **83.3%** (279 false alarms) |
+| Abnormal F1-score | 0.883 |
 
-Beats with other symbols (for example paced or unclassifiable beats) are skipped. This is a 2-class grouping of the AAMI EC57 categories (Normal vs. supraventricular, ventricular and fusion beats), not the full 5-class scheme.
+<p align="center">
+  <img src="docs/metrics_chart.png" alt="Per-class precision, recall and F1" width="600">
+</p>
 
-## 4. Train/Test Split
+In plain terms: the model catches most abnormal beats, at the cost of some false alarms, which is the preferred trade-off for a screening-assist tool.
 
-The split is **by record (patient), not by beat**. Beats from one recording never appear in both sets, which avoids patient leakage that would inflate results.
+## How it works
+
+```mermaid
+flowchart LR
+    A[MIT-BIH ECG<br/>recordings] --> B[Beat extraction<br/>180-sample window<br/>around each R-peak]
+    B --> C[Normalize beat<br/>+ 34 features]
+    C --> D[Random Forest<br/>trained on 6 records]
+    D --> E[(model.pkl)]
+    E --> F[FastAPI backend]
+    F --> G[/predict -> class + confidence/]
+```
+
+1. **Data:** real ECG recordings and cardiologist beat labels from the MIT-BIH Arrhythmia Database, downloaded automatically with `wfdb`.
+2. **Features (34 per beat):** 4 rhythm features (previous and next RR interval, plus each relative to the local average) and 30 samples of the normalized beat waveform.
+3. **Model:** Random Forest (100 trees, balanced class weights) predicting Normal vs Abnormal.
+4. **Backend:** a FastAPI service loads the saved model and returns a class and confidence score.
+
+## Try it
+
+**Requirements:** Python 3.9+ and an internet connection (records are downloaded from PhysioNet).
+
+```bash
+git clone https://github.com/rktm0604/ecg-rhythm-classification.git
+cd ecg-rhythm-classification
+pip install -r requirements.txt
+
+python train.py          # trains the model and prints the metrics
+uvicorn api:app          # starts the API
+```
+
+Then open **http://127.0.0.1:8000/docs** for an interactive page where you can:
+
+1. Call **GET /sample** to get a real normal and a real abnormal beat from the test records.
+2. Paste one into **POST /predict** and see the model's answer.
+3. Call **GET /metrics** to see the saved evaluation report.
+
+### API
+
+| Method | Endpoint | What it does |
+|---|---|---|
+| GET | `/` | Health check; reports the expected feature count (34) |
+| POST | `/predict` | Send `{"features": [34 numbers]}`, receive `{"class": "Normal" or "Abnormal", "confidence": 0-1}` |
+| GET | `/metrics` | Saved test-set evaluation report |
+| GET | `/sample` | Real example beats to try with `/predict` |
+
+The API returns a clear error (HTTP 400) if the number of features is wrong.
+
+## Dataset and train/test split
+
+**Dataset:** [MIT-BIH Arrhythmia Database](https://physionet.org/content/mitdb/) (PhysioNet): 48 half-hour, two-channel recordings from 47 subjects at 360 Hz, annotated beat by beat by cardiologists.
+
+**The split is by patient recording, not by beat.** Beats from one recording never appear in both sets. A random beat-level split would let the model "recognize" a patient it already saw, which makes results look better than they really are.
+
+<p align="center">
+  <img src="docs/dataset_split.png" alt="Train/test split" width="600">
+</p>
 
 | Set | Records | Beats | Normal | Abnormal |
 |---|---|---|---|---|
 | **Train** | 101, 106, 119, 201, 203, 208 | 13,754 | 10,647 | 3,107 |
 | **Test** | 200, 210, 221 | 7,669 | 6,189 | 1,480 |
 
-Per-record breakdown:
+<details>
+<summary>Per-record breakdown</summary>
 
 | Split | Record | Beats | Normal | Abnormal |
 |---|---|---|---|---|
@@ -57,135 +116,100 @@ Per-record breakdown:
 | Test | 210 | 2,647 | 2,420 | 227 |
 | Test | 221 | 2,424 | 2,028 | 396 |
 
-Abnormal beats are about 22.6% of the training set and 19.3% of the test set. No separate validation set was used and no hyperparameter tuning was done in this version.
+</details>
 
-## 5. Preprocessing and Features
+<details>
+<summary>Label mapping (2 classes)</summary>
 
-For every labeled beat (anchored on the annotated R-peak):
-
-1. **Window:** 180 samples around the R-peak (90 before, 90 after; 0.5 s at 360 Hz), from the first ECG channel.
-2. **Normalization:** each beat window is z-scored (zero mean, unit standard deviation).
-3. **Features (34 total):**
-   - 4 rhythm features: previous RR interval, next RR interval, and each divided by the local average RR interval
-   - 30 waveform samples (every 6th sample of the normalized beat window)
-4. **Class imbalance:** handled with `class_weight="balanced"` in the Random Forest.
-
-Not implemented in this version: bandpass filtering and automated R-peak detection (the dataset's annotated R-peak positions are used instead).
-
-## 6. Results
-
-Evaluated on the held-out test records (7,669 beats from patients not seen in training). All numbers below come from `python train.py` and are saved in `metrics.json`.
-
-### Overall
-
-| Metric | Value |
+| Class | MIT-BIH beat symbols |
 |---|---|
-| **Accuracy** | **0.952** |
-| Macro avg precision / recall / F1 | 0.909 / 0.947 / 0.926 |
-| Weighted avg precision / recall / F1 | 0.956 / 0.952 / 0.953 |
+| Normal | `N`, `L`, `R`, `e`, `j` |
+| Abnormal | `A`, `a`, `J`, `S`, `V`, `E`, `F` |
 
-### Per class
+Other symbols (for example paced or unclassifiable beats) are skipped. This groups the AAMI EC57 categories into Normal vs. supraventricular, ventricular and fusion beats; it is not the full 5-class scheme.
+
+</details>
+
+## Detailed results
 
 | Class | Precision | Recall | F1-score | Support |
 |---|---|---|---|---|
 | Normal | 0.985 | 0.955 | 0.970 | 6,189 |
 | Abnormal | 0.833 | 0.940 | 0.883 | 1,480 |
+| **Accuracy** | | | **0.952** | 7,669 |
+| Macro average | 0.909 | 0.947 | 0.926 | 7,669 |
+| Weighted average | 0.956 | 0.952 | 0.953 | 7,669 |
 
-### Confusion matrix (rows = true, columns = predicted)
+**Confusion matrix** (rows = true class, columns = predicted):
 
 | | Predicted Normal | Predicted Abnormal |
 |---|---|---|
 | **True Normal** | 5,910 | 279 |
 | **True Abnormal** | 89 | 1,391 |
 
-![Confusion matrix](confusion_matrix.png)
+<p align="center">
+  <img src="confusion_matrix.png" alt="Confusion matrix" width="380">
+</p>
 
-### How to read these results
+<details>
+<summary>What do these metrics mean?</summary>
 
-- **Recall (Abnormal) = 0.940:** the model caught 1,391 of 1,480 abnormal beats and missed 89.
-- **Precision (Abnormal) = 0.833:** when the model says Abnormal it is right 83.3% of the time; there were 279 false alarms on normal beats.
-- The model favors catching abnormal beats at the cost of some false alarms, which suits a screening-assist setting.
-
-### Metric definitions
-
-| Metric | Definition |
+| Metric | Meaning |
 |---|---|
-| Accuracy | (TP + TN) / all beats |
-| Precision | TP / (TP + FP): of beats predicted as a class, how many were correct |
-| Recall | TP / (TP + FN): of beats truly in a class, how many were found |
-| F1-score | 2 x Precision x Recall / (Precision + Recall) |
+| Accuracy | Share of all beats classified correctly |
+| Precision | Of the beats the model labeled as a class, how many were truly that class |
+| Recall | Of the beats truly in a class, how many the model found |
+| F1-score | Balance of precision and recall |
 
-## 7. Limitations
+Accuracy alone can mislead here because normal beats are the majority, so per-class precision and recall are reported too.
 
-- Small subset: 9 of the 48 records, with only 3 test records. Results may change with different records.
-- Single train/test run, no cross-validation and no confidence intervals.
-- Binary task only; the 5 AAMI classes are not yet separated.
-- One model only; no comparison with SVM or a CNN yet.
-- Uses annotated R-peak positions rather than an automatic detector, which makes the task easier than a fully automatic pipeline.
-- MIT-BIH is an old, single-source dataset; generalization to other databases has not been tested.
+</details>
 
-## 8. Project Structure
+## Limitations
+
+This is an early prototype, and results should be read with that in mind.
+
+- **Small subset:** 9 of 48 records, with only 3 test records. Different records could change the numbers.
+- **One run:** no cross-validation or confidence intervals yet.
+- **Two classes only:** the 5 AAMI beat categories are not separated yet.
+- **One model:** no comparison with other algorithms yet.
+- **Easier setup than real deployment:** it uses the dataset's annotated R-peak positions instead of detecting them automatically, and has no bandpass filtering.
+- **No tuning:** no separate validation set or hyperparameter search.
+- **One old dataset:** MIT-BIH was recorded in 1975-1979; generalization to other databases is untested.
+
+## Roadmap
+
+- [ ] Use all usable MIT-BIH records and the 5-class AAMI scheme
+- [ ] Add SVM and a 1D-CNN and compare all models
+- [ ] Bandpass filtering and automatic R-peak detection
+- [ ] Validation split, tuning, and cross-validation
+- [ ] Compare class-imbalance methods (class weights vs. SMOTE)
+- [ ] Unit and integration tests
+- [ ] Simple web front end
+- [ ] Test on other PhysioNet databases
+
+## Project structure
 
 ```
 .
-├── train.py             # data loading, preprocessing, training, evaluation, saves artifacts
-├── api.py               # FastAPI backend: /predict, /metrics, /sample
-├── requirements.txt     # Python dependencies
-├── model.pkl            # trained Random Forest (created by train.py)
-├── metrics.json         # saved evaluation report (created by train.py)
-├── confusion_matrix.png # confusion matrix image (created by train.py)
-├── sample_beats.json    # example normal/abnormal test beats for the API demo
+├── train.py              # load data, extract features, train, evaluate, save artifacts
+├── api.py                # FastAPI backend (/predict, /metrics, /sample)
+├── requirements.txt
+├── model.pkl             # trained Random Forest (created by train.py)
+├── metrics.json          # saved evaluation report (created by train.py)
+├── confusion_matrix.png  # created by train.py
+├── sample_beats.json     # example beats for the API demo (created by train.py)
+├── docs/                 # charts used in this README
 ├── LICENSE
 └── README.md
 ```
 
-## 9. How to Run
-
-Requires Python 3.9+ and an internet connection (to download MIT-BIH records).
-
-```bash
-pip install -r requirements.txt
-python train.py          # trains and prints metrics; writes model.pkl, metrics.json, etc.
-uvicorn api:app          # starts the backend
-```
-
-Then open http://127.0.0.1:8000/docs.
-
-### API endpoints
-
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/` | Health check; returns the expected feature count (34) |
-| POST | `/predict` | Body: `{"features": [34 numbers]}`; returns `{"class": "Normal" or "Abnormal", "confidence": 0.xx}` |
-| GET | `/metrics` | Returns the saved evaluation report |
-| GET | `/sample` | Returns one real normal and one real abnormal test beat to paste into `/predict` |
-
-## 10. Software Engineering Overview
-
-- **Modules:** data loading and preprocessing, feature extraction, model training and evaluation, prediction API.
-- **Interface:** the model is a replaceable module behind one function-like contract (34 features in, class and confidence out).
-- **Validation:** the API rejects requests with the wrong number of features (HTTP 400).
-- **Version control:** Git/GitHub, with changes committed in small steps.
-
-## 11. Roadmap
-
-Planned, not yet done:
-
-- Use all usable MIT-BIH records and the 5-class AAMI scheme
-- Add SVM and a 1D-CNN for comparison
-- Bandpass filtering and automatic R-peak detection
-- Validation split, hyperparameter tuning, and cross-validation
-- Minority-class handling comparison (class weights vs. SMOTE) and per-class reporting
-- Unit and integration tests, defect log
-- Simple web front end
-- Cross-dataset testing on other PhysioNet databases
-
-## 12. References
+## References
 
 - Moody GB, Mark RG. The impact of the MIT-BIH Arrhythmia Database. *IEEE Engineering in Medicine and Biology Magazine*, 20(3):45-50, 2001.
 - Goldberger AL, et al. PhysioBank, PhysioToolkit, and PhysioNet. *Circulation*, 101(23):e215-e220, 2000.
-- MIT-BIH Arrhythmia Database: https://physionet.org/content/mitdb/
+- Dataset: https://physionet.org/content/mitdb/
 
-## Disclaimer
+## License
 
-This is an academic proof-of-concept. It is not a certified medical device and is not intended for diagnosis or treatment.
+MIT. See [LICENSE](LICENSE).
