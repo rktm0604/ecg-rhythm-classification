@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ECG Rhythm Classifier — Interactive Dashboard</title>
+  <meta name="description" content="Interactive dashboard for ECG heartbeat rhythm classification using a Random Forest model trained on the MIT-BIH Arrhythmia Database." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Ambient background blobs -->
+  <div class="ambient-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- Top navigation -->
+  <nav id="main-nav">
+    <div class="nav-brand">
+      <svg class="brand-icon" viewBox="0 0 32 32" width="28" height="28" fill="none">
+        <path d="M2 16h4l3-10 4 20 4-14 3 8 4-4h6" stroke="url(#ecg-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <defs><linearGradient id="ecg-grad" x1="0" y1="0" x2="32" y2="0"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
+      </svg>
+      <span>ECG Classifier</span>
+    </div>
+    <div class="nav-links">
+      <button class="nav-btn active" data-view="dashboard" id="nav-dashboard">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        Dashboard
+      </button>
+      <button class="nav-btn" data-view="predict" id="nav-predict">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        Predict
+      </button>
+    </div>
+    <div class="nav-status" id="api-status">
+      <span class="status-dot"></span>
+      <span class="status-text">Connecting…</span>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════ DASHBOARD VIEW ═══════════════════════════════════════════ -->
+  <main id="view-dashboard" class="view active">
+    <!-- Hero section -->
+    <header class="hero">
+      <h1>ECG Rhythm Classification</h1>
+      <p class="hero-sub">Random Forest model trained on the MIT-BIH Arrhythmia Database — classifying heartbeats as <strong>Normal</strong> or <strong>Abnormal</strong> in real time.</p>
+    </header>
+
+    <!-- KPI cards -->
+    <section class="kpi-row" id="kpi-row">
+      <div class="kpi-card" id="kpi-accuracy">
+        <div class="kpi-ring">
+          <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="ring-bg"/><circle cx="60" cy="60" r="52" class="ring-fg" data-pct="0"/></svg>
+          <span class="kpi-value">—</span>
+        </div>
+        <span class="kpi-label">Accuracy</span>
+      </div>
+      <div class="kpi-card" id="kpi-precision">
+        <div class="kpi-ring">
+          <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="ring-bg"/><circle cx="60" cy="60" r="52" class="ring-fg" data-pct="0"/></svg>
+          <span class="kpi-value">—</span>
+        </div>
+        <span class="kpi-label">Precision <small>(abnormal)</small></span>
+      </div>
+      <div class="kpi-card" id="kpi-recall">
+        <div class="kpi-ring">
+          <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="ring-bg"/><circle cx="60" cy="60" r="52" class="ring-fg" data-pct="0"/></svg>
+          <span class="kpi-value">—</span>
+        </div>
+        <span class="kpi-label">Recall <small>(abnormal)</small></span>
+      </div>
+      <div class="kpi-card" id="kpi-f1">
+        <div class="kpi-ring">
+          <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="ring-bg"/><circle cx="60" cy="60" r="52" class="ring-fg" data-pct="0"/></svg>
+          <span class="kpi-value">—</span>
+        </div>
+        <span class="kpi-label">F1 Score <small>(abnormal)</small></span>
+      </div>
+    </section>
+
+    <!-- Confusion matrix + class breakdown -->
+    <section class="panel-row">
+      <div class="panel glass" id="panel-confusion">
+        <h2>Confusion Matrix</h2>
+        <p class="panel-sub">Test set — 7,669 beats from 3 unseen patients</p>
+        <div class="cm-grid" id="cm-grid">
+          <!-- filled by JS -->
+        </div>
+        <div class="cm-legend">
+          <span><span class="dot dot-tp"></span>True Positive / True Negative</span>
+          <span><span class="dot dot-err"></span>False Positive / False Negative</span>
+        </div>
+      </div>
+
+      <div class="panel glass" id="panel-classes">
+        <h2>Per-Class Report</h2>
+        <p class="panel-sub">Precision, Recall, F1 for each class</p>
+        <table class="metrics-table" id="class-table">
+          <thead>
+            <tr><th>Class</th><th>Precision</th><th>Recall</th><th>F1</th><th>Support</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Dataset overview -->
+    <section class="panel-row">
+      <div class="panel glass full-width" id="panel-dataset">
+        <h2>Dataset Split Overview</h2>
+        <p class="panel-sub">Records split by patient to prevent data leakage</p>
+        <div class="dataset-bars" id="dataset-bars">
+          <!-- filled by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Disclaimer -->
+    <footer class="disclaimer">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      Academic prototype — not a certified medical device. Must not be used for clinical decisions.
+    </footer>
+  </main>
+
+  <!-- ═══════════════════════════════════════════ PREDICT VIEW ═══════════════════════════════════════════ -->
+  <main id="view-predict" class="view">
+    <header class="hero compact">
+      <h1>Classify a Heartbeat</h1>
+      <p class="hero-sub">Enter 34 features or load a sample beat, then hit <strong>Classify</strong> to see the model's prediction.</p>
+    </header>
+
+    <section class="predict-layout">
+      <!-- Left: input area -->
+      <div class="panel glass predict-input-panel">
+        <div class="sample-buttons">
+          <button class="btn btn-outline" id="btn-load-normal">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Load Normal Beat
+          </button>
+          <button class="btn btn-outline" id="btn-load-abnormal">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            Load Abnormal Beat
+          </button>
+          <button class="btn btn-ghost" id="btn-clear">Clear</button>
+        </div>
+
+        <label class="textarea-label" for="features-input">34 comma-separated features</label>
+        <textarea id="features-input" class="features-textarea" rows="6" spellcheck="false" placeholder="e.g. 262.0, 202.0, 1.168, 0.901, -0.227, …"></textarea>
+        <span class="feature-count" id="feature-count">0 / 34 features</span>
+
+        <button class="btn btn-primary" id="btn-classify">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Classify
+        </button>
+      </div>
+
+      <!-- Right: result + waveform -->
+      <div class="predict-result-area">
+        <!-- ECG waveform visualization -->
+        <div class="panel glass waveform-panel">
+          <h2>ECG Waveform</h2>
+          <p class="panel-sub">30 down-sampled waveform features visualized</p>
+          <canvas id="ecg-canvas" width="600" height="220"></canvas>
+        </div>
+
+        <!-- Result card -->
+        <div class="result-card glass" id="result-card">
+          <div class="result-placeholder" id="result-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            <p>Load a sample or enter features, then classify.</p>
+          </div>
+          <div class="result-content hidden" id="result-content">
+            <div class="result-badge" id="result-badge">Normal</div>
+            <div class="result-confidence">
+              <span class="conf-label">Confidence</span>
+              <div class="conf-bar-track">
+                <div class="conf-bar-fill" id="conf-bar-fill"></div>
+              </div>
+              <span class="conf-value" id="conf-value">0%</span>
+            </div>
+            <div class="result-details" id="result-details"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
