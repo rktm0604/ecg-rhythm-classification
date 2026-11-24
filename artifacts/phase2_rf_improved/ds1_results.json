@@ -1,0 +1,2702 @@
+{
+  "labels": [
+    "N",
+    "S",
+    "V",
+    "F",
+    "Q"
+  ],
+  "fit_records": [
+    "106",
+    "108",
+    "109",
+    "112",
+    "114",
+    "115",
+    "116",
+    "121",
+    "122",
+    "124",
+    "201",
+    "203",
+    "207",
+    "209",
+    "215",
+    "220",
+    "223",
+    "230"
+  ],
+  "validation_records": [
+    "101",
+    "118",
+    "119",
+    "205",
+    "208"
+  ],
+  "baseline_metrics": {
+    "accuracy": 0.9558434916034438,
+    "macro_f1": 0.39923735065927896,
+    "per_class": {
+      "N": {
+        "precision": 0.96539035305818,
+        "recall": 0.9989708757847072,
+        "f1": 0.9818935868905523,
+        "support": 9717
+      },
+      "S": {
+        "precision": 1.0,
+        "recall": 0.038461538461538464,
+        "f1": 0.07407407407407407,
+        "support": 104
+      },
+      "V": {
+        "precision": 0.8983253588516746,
+        "recall": 0.9862114248194354,
+        "f1": 0.9402190923317684,
+        "support": 1523
+      },
+      "F": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 383
+      },
+      "Q": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 4
+      }
+    },
+    "confusion_matrix": [
+      [
+        9707,
+        0,
+        10,
+        0,
+        0
+      ],
+      [
+        14,
+        4,
+        86,
+        0,
+        0
+      ],
+      [
+        21,
+        0,
+        1502,
+        0,
+        0
+      ],
+      [
+        310,
+        0,
+        73,
+        0,
+        0
+      ],
+      [
+        3,
+        0,
+        1,
+        0,
+        0
+      ]
+    ]
+  },
+  "selected": {
+    "name": "existing_phase2_random_forest_retained",
+    "feature_set": "full_34",
+    "params": {
+      "n_estimators": 300,
+      "max_depth": null,
+      "min_samples_leaf": 1,
+      "class_weight": {
+        "N": 1.0,
+        "S": 5.0,
+        "V": 1.0,
+        "F": 8.0,
+        "Q": 1.0
+      },
+      "max_features": "sqrt",
+      "random_state": 42
+    },
+    "metrics": {
+      "accuracy": 0.9558434916034438,
+      "macro_f1": 0.39923735065927896,
+      "per_class": {
+        "N": {
+          "precision": 0.96539035305818,
+          "recall": 0.9989708757847072,
+          "f1": 0.9818935868905523,
+          "support": 9717
+        },
+        "S": {
+          "precision": 1.0,
+          "recall": 0.038461538461538464,
+          "f1": 0.07407407407407407,
+          "support": 104
+        },
+        "V": {
+          "precision": 0.8983253588516746,
+          "recall": 0.9862114248194354,
+          "f1": 0.9402190923317684,
+          "support": 1523
+        },
+        "F": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 383
+        },
+        "Q": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 4
+        }
+      },
+      "confusion_matrix": [
+        [
+          9707,
+          0,
+          10,
+          0,
+          0
+        ],
+        [
+          14,
+          4,
+          86,
+          0,
+          0
+        ],
+        [
+          21,
+          0,
+          1502,
+          0,
+          0
+        ],
+        [
+          310,
+          0,
+          73,
+          0,
+          0
+        ],
+        [
+          3,
+          0,
+          1,
+          0,
+          0
+        ]
+      ]
+    },
+    "passes_predeclared_selection_rule": false,
+    "retained_existing": true
+  },
+  "decision": "No candidate met the predeclared improvement and non-degradation rule; retain the existing Phase 2 RF.",
+  "candidates": [
+    {
+      "name": "grid_existing_custom_depth_None_leaf_1",
+      "feature_set": "full_34",
+      "params": {
+        "n_estimators": 300,
+        "max_depth": null,
+        "min_samples_leaf": 1,
+        "class_weight": {
+          "N": 1.0,
+          "S": 5.0,
+          "V": 1.0,
+          "F": 8.0,
+          "Q": 1.0
+        },
+        "max_features": "sqrt",
+        "random_state": 42
+      },
+      "metrics": {
+        "accuracy": 0.9558434916034438,
+        "macro_f1": 0.39923735065927896,
+        "per_class": {
+          "N": {
+            "precision": 0.96539035305818,
+            "recall": 0.9989708757847072,
+            "f1": 0.9818935868905523,
+            "support": 9717
+          },
+          "S": {
+            "precision": 1.0,
+            "recall": 0.038461538461538464,
+            "f1": 0.07407407407407407,
+            "support": 104
+          },
+          "V": {
+            "precision": 0.8983253588516746,
+            "recall": 0.9862114248194354,
+            "f1": 0.9402190923317684,
+            "support": 1523
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 383
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4
+          }
+        },
+        "confusion_matrix": [
+          [
+            9707,
+            0,
+            10,
+            0,
+            0
+          ],
+          [
+            14,
+            4,
+            86,
+            0,
+            0
+          ],
+          [
+            21,
+            0,
+            1502,
+            0,
+            0
+          ],
+          [
+            310,
+            0,
+            73,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            1,
+            0,
+            0
+          ]
+        ]
+      },
+      "passes_predeclared_selection_rule": false
+    },
+    {
+      "name": "grid_balanced_depth_None_leaf_1",
+      "feature_set": "full_34",
+      "params": {
+        "n_estimators": 300,
+        "max_depth": null,
+        "min_samples_leaf": 1,
+        "class_weight": "balanced",
+        "max_features": "sqrt",
+        "random_state": 42
+      },
+      "metrics": {
+        "accuracy": 0.9516665245929589,
+        "macro_f1": 0.3970182524321723,
+        "per_class": {
+          "N": {
+            "precision": 0.9568600413670836,
+            "recall": 0.9997941751569415,
+            "f1": 0.9778560644187216,
+            "support": 9717
+          },
+          "S": {
+            "precision": 1.0,
+            "recall": 0.038461538461538464,
+            "f1": 0.07407407407407407,
+            "support": 104
+          },
+          "V": {
+            "precision": 0.9180432020330368,
+            "recall": 0.9487852921864741,
+            "f1": 0.9331611236680659,
+            "support": 1523
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 383
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4
+          }
+        },
+        "confusion_matrix": [
+          [
+            9715,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            58,
+            4,
+            42,
+            0,
+            0
+          ],
+          [
+            78,
+            0,
+            1445,
+            0,
+            0
+          ],
+          [
+            298,
+            0,
+            85,
+            0,
+            0
+          ],
+          [
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "passes_predeclared_selection_rule": false
+    },
+    {
+      "name": "grid_balanced_subsample_depth_None_leaf_1",
+      "feature_set": "full_34",
+      "params": {
+        "n_estimators": 300,
+        "max_depth": null,
+        "min_samples_leaf": 1,
+        "class_weight": "balanced_subsample",
+        "max_features": "sqrt",
+        "random_state": 42
+      },
+      "metrics": {
+        "accuracy": 0.950473105447106,
+        "macro_f1": 0.3953098017944896,
+        "per_class": {
+          "N": {
+            "precision": 0.9566715903495815,
+            "recall": 0.9997941751569415,
+            "f1": 0.9777576489533011,
+            "support": 9717
+          },
+          "S": {
+            "precision": 1.0,
+            "recall": 0.038461538461538464,
+            "f1": 0.07407407407407407,
+            "support": 104
+          },
+          "V": {
+            "precision": 0.9103053435114504,
+            "recall": 0.9395929087327642,
+            "f1": 0.9247172859450727,
+            "support": 1523
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 383
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4
+          }
+        },
+        "confusion_matrix": [
+          [
+            9715,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            53,
+            4,
+            47,
+            0,
+            0
+          ],
+          [
+            92,
+            0,
+            1431,
+            0,
+            0
+          ],
+          [
+            291,
+            0,
+            92,
+            0,
+            0
+          ],
+          [
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "passes_predeclared_selection_rule": false
+    },
+    {
+      "name": "grid_unweighted_depth_None_leaf_1",
+      "feature_set": "full_34",
+      "params": {
+        "n_estimators": 300,
+        "max_depth": null,
+        "min_samples_leaf": 1,
+        "class_weight": null,
+        "max_features": "sqrt",
+        "random_state": 42
+      },
+      "metrics": {
+        "accuracy": 0.9543943397834797,
+        "macro_f1": 0.39411719647644583,
+        "per_class": {
+          "N": {
+            "precision": 0.9644846796657381,
+            "recall": 0.9977359267263559,
+            "f1": 0.9808285699833073,
+            "support": 9717
+          },
+          "S": {
+            "precision": 0.13636363636363635,
+            "recall": 0.028846153846153848,
+            "f1": 0.047619047619047616,
+            "support": 104
+          },
+          "V": {
+            "precision": 0.904043452021726,
+            "recall": 0.9835850295469468,
+            "f1": 0.9421383647798742,
+            "support": 1523
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 383
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4
+          }
+        },
+        "confusion_matrix": [
+          [
+            9695,
+            12,
+            10,
+            0,
+            0
+          ],
+          [
+            22,
+            3,
+            79,
+            0,
+            0
+          ],
+          [
+            18,
+            7,
+            1498,
+            0,
+            0
+          ],
+          [
+            314,
+            0,
+            69,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            1,
+            0,
+            0
+          ]
+        ]
+      },
+      "passes_predeclared_selection_rule": false
+    },
+    {
+      "name": "grid_S10_depth_None_leaf_1",
+      "feature_set": "full_34",
+      "params": {
+        "n_estimators": 300,
+        "max_depth": null,
+        "min_samples_leaf": 1,
+        "class_weight": {
+          "N": 1.0,
+          "S": 10.0,
+          "V": 1.0,
+          "F": 8.0,
+          "Q": 1.0
+        },
+        "max_features": "sqrt",
+        "random_state": 42
+      },
+      "metrics": {
+        "accuracy": 0.95575824737874,
+        "macro_f1": 0.39968095302032247,
+        "per_class": {
+          "N": {
+            "precision": 0.9642360421219949,
+            "recall": 0.998867963363178,
+            "f1": 0.9812465247940151,
+            "support": 9717
+          },
+          "S": {
+            "precision": 0.8,
+            "recall": 0.038461538461538464,
+            "f1": 0.07339449541284404,
+            "support": 104
+          },
+          "V": {
+            "precision": 0.9048192771084337,
+            "recall": 0.9862114248194354,
+            "f1": 0.9437637448947533,
+            "support": 1523
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 383
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4
+          }
+        },
+        "confusion_matrix": [
+          [
+            9706,
+            1,
+            10,
+            0,
+            0
+          ],
+          [
+            24,
+            4,
+            76,
+            0,
+            0
+          ],
+          [
+            21,
+            0,
+            1502,
+            0,
+            0
+          ],
+          [
+            311,
+            0,
+            72,
+            0,
+            0
+          ],
+          [
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "passes_predeclared_selection_rule": false
+    },
+    {
+      "name": "grid_S20_depth_None_leaf_1",
+      "feature_set": "full_34",
+      "params": {
+        "n_estimators": 300,
+        "max_depth": null,
+        "min_samples_leaf": 1,
+        "class_weight": {
+          "N": 1.0,
+          "S": 20.0,
+          "V": 1.0,
+          "F": 8.0,
+          "Q": 1.0
+        },
+        "max_features": "sqrt",
+        "random_state": 42
+      },
+      "metrics": {
+        "accuracy": 0.9558434916034438,
+        "macro_f1": 0.39886722752534937,
+        "per_class": {
+          "N": {
+            "precision": 0.9659667628619764,
+            "recall": 0.9989708757847072,
+            "f1": 0.9821916422139026,
+            "support": 9717
+          },
+          "S": {
+            "precision": 0.8,
+            "recall": 0.038461538461538464,
+            "f1": 0.07339449541284404,
+            "support": 104
+          },
+          "V": {
+            "precision": 0.8956469886702445,
+            "recall": 0.9862114248194354,
+            "f1": 0.93875,
+            "support": 1523
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 383
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4
+          }
+        },
+        "confusion_matrix": [
+          [
+            9707,
+            1,
+            9,
+            0,
+            0
+          ],
+          [
+            16,
+            4,
+            84,
+            0,
+            0
+          ],
+          [
+            21,
+            0,
+            1502,
+            0,
+            0
+          ],
+          [
+            302,
+            0,
+            81,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            1,
+            0,
+            0
+          ]
+        ]
+      },
+      "passes_predeclared_selection_rule": false
+    },
+    {
+      "name": "grid_existing_custom_depth_24_leaf_1",
+      "feature_set": "full_34",
+      "params": {
+        "n_estimators": 300,
+        "max_depth": 24,
+        "min_samples_leaf": 1,
+        "class_weight": {
+          "N": 1.0,
+          "S": 5.0,
+          "V": 1.0,
+          "F": 8.0,
+          "Q": 1.0
+        },
+        "max_features": "sqrt",
+        "random_state": 42
+      },
+      "metrics": {
+        "accuracy": 0.9559287358281476,
+        "macro_f1": 0.39921582851175746,
+        "per_class": {
+          "N": {
+            "precision": 0.9656784719458814,
+            "recall": 0.9989708757847072,
+            "f1": 0.9820425919368708,
+            "support": 9717
+          },
+          "S": {
+            "precision": 1.0,
+            "recall": 0.038461538461538464,
+            "f1": 0.07407407407407407,
+            "support": 104
+          },
+          "V": {
+            "precision": 0.8973134328358209,
+            "recall": 0.9868680236375574,
+            "f1": 0.9399624765478424,
+            "support": 1523
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 383
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4
+          }
+        },
+        "confusion_matrix": [
+          [
+            9707,
+            0,
+            10,
+            0,
+            0
+          ],
+          [
+            15,
+            4,
+            85,
+            0,
+            0
+          ],
+          [
+            20,
+            0,
+            1503,
+            0,
+            0
+          ],
+          [
+            307,
+            0,
+            76,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            1,
+            0,
+            0
+          ]
+        ]
+      },
+      "passes_predeclared_selection_rule": false
+    },
+    {
+      "name": "grid_existing_custom_depth_24_leaf_3",
+      "feature_set": "full_34",
+      "params": {
+        "n_estimators": 300,
+        "max_depth": 24,
+        "min_samples_leaf": 3,
+        "class_weight": {
+          "N": 1.0,
+          "S": 5.0,
+          "V": 1.0,
+          "F": 8.0,
+          "Q": 1.0
+        },
+        "max_features": "sqrt",
+        "random_state": 42
+      },
+      "metrics": {
+        "accuracy": 0.9549058051317023,
+        "macro_f1": 0.39827169441471844,
+        "per_class": {
+          "N": {
+            "precision": 0.9639236732259988,
+            "recall": 0.998147576412473,
+            "f1": 0.9807371454573032,
+            "support": 9717
+          },
+          "S": {
+            "precision": 0.25,
+            "recall": 0.038461538461538464,
+            "f1": 0.06666666666666667,
+            "support": 104
+          },
+          "V": {
+            "precision": 0.9068360556563824,
+            "recall": 0.9842416283650689,
+            "f1": 0.9439546599496221,
+            "support": 1523
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 383
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4
+          }
+        },
+        "confusion_matrix": [
+          [
+            9699,
+            8,
+            10,
+            0,
+            0
+          ],
+          [
+            21,
+            4,
+            79,
+            0,
+            0
+          ],
+          [
+            20,
+            4,
+            1499,
+            0,
+            0
+          ],
+          [
+            319,
+            0,
+            64,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            1,
+            0,
+            0
+          ]
+        ]
+      },
+      "passes_predeclared_selection_rule": false
+    },
+    {
+      "name": "grid_existing_custom_depth_24_leaf_5",
+      "feature_set": "full_34",
+      "params": {
+        "n_estimators": 300,
+        "max_depth": 24,
+        "min_samples_leaf": 5,
+        "class_weight": {
+          "N": 1.0,
+          "S": 5.0,
+          "V": 1.0,
+          "F": 8.0,
+          "Q": 1.0
+        },
+        "max_features": "sqrt",
+        "random_state": 42
+      },
+      "metrics": {
+        "accuracy": 0.9540533628846646,
+        "macro_f1": 0.39724149866011155,
+        "per_class": {
+          "N": {
+            "precision": 0.9631505760826381,
+            "recall": 0.9979417515694144,
+            "f1": 0.9802375537022997,
+            "support": 9717
+          },
+          "S": {
+            "precision": 0.18181818181818182,
+            "recall": 0.038461538461538464,
+            "f1": 0.06349206349206349,
+            "support": 104
+          },
+          "V": {
+            "precision": 0.9085923217550275,
+            "recall": 0.9789888378200919,
+            "f1": 0.9424778761061947,
+            "support": 1523
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 383
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4
+          }
+        },
+        "confusion_matrix": [
+          [
+            9697,
+            10,
+            10,
+            0,
+            0
+          ],
+          [
+            22,
+            4,
+            78,
+            0,
+            0
+          ],
+          [
+            24,
+            8,
+            1491,
+            0,
+            0
+          ],
+          [
+            322,
+            0,
+            61,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            1,
+            0,
+            0
+          ]
+        ]
+      },
+      "passes_predeclared_selection_rule": false
+    },
+    {
+      "name": "grid_existing_custom_depth_12_leaf_1",
+      "feature_set": "full_34",
+      "params": {
+        "n_estimators": 300,
+        "max_depth": 12,
+        "min_samples_leaf": 1,
+        "class_weight": {
+          "N": 1.0,
+          "S": 5.0,
+          "V": 1.0,
+          "F": 8.0,
+          "Q": 1.0
+        },
+        "max_features": "sqrt",
+        "random_state": 42
+      },
+      "metrics": {
+        "accuracy": 0.9556730031540364,
+        "macro_f1": 0.3998620557320556,
+        "per_class": {
+          "N": {
+            "precision": 0.9634666931400774,
+            "recall": 0.9987650509416487,
+            "f1": 0.9807983830217282,
+            "support": 9717
+          },
+          "S": {
+            "precision": 0.5714285714285714,
+            "recall": 0.038461538461538464,
+            "f1": 0.07207207207207207,
+            "support": 104
+          },
+          "V": {
+            "precision": 0.9097516656571775,
+            "recall": 0.9862114248194354,
+            "f1": 0.9464398235664776,
+            "support": 1523
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 383
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4
+          }
+        },
+        "confusion_matrix": [
+          [
+            9705,
+            2,
+            10,
+            0,
+            0
+          ],
+          [
+            22,
+            4,
+            78,
+            0,
+            0
+          ],
+          [
+            20,
+            1,
+            1502,
+            0,
+            0
+          ],
+          [
+            322,
+            0,
+            61,
+            0,
+            0
+          ],
+          [
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "passes_predeclared_selection_rule": false
+    },
+    {
+      "name": "grid_existing_custom_depth_12_leaf_3",
+      "feature_set": "full_34",
+      "params": {
+        "n_estimators": 300,
+        "max_depth": 12,
+        "min_samples_leaf": 3,
+        "class_weight": {
+          "N": 1.0,
+          "S": 5.0,
+          "V": 1.0,
+          "F": 8.0,
+          "Q": 1.0
+        },
+        "max_features": "sqrt",
+        "random_state": 42
+      },
+      "metrics": {
+        "accuracy": 0.9537976302105532,
+        "macro_f1": 0.39665874986114413,
+        "per_class": {
+          "N": {
+            "precision": 0.9632535505015394,
+            "recall": 0.998147576412473,
+            "f1": 0.980390174871121,
+            "support": 9717
+          },
+          "S": {
+            "precision": 0.17391304347826086,
+            "recall": 0.038461538461538464,
+            "f1": 0.06299212598425197,
+            "support": 104
+          },
+          "V": {
+            "precision": 0.9066503965832825,
+            "recall": 0.9757058437294813,
+            "f1": 0.9399114484503479,
+            "support": 1523
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 383
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4
+          }
+        },
+        "confusion_matrix": [
+          [
+            9699,
+            8,
+            10,
+            0,
+            0
+          ],
+          [
+            19,
+            4,
+            81,
+            0,
+            0
+          ],
+          [
+            26,
+            11,
+            1486,
+            0,
+            0
+          ],
+          [
+            322,
+            0,
+            61,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            1,
+            0,
+            0
+          ]
+        ]
+      },
+      "passes_predeclared_selection_rule": false
+    },
+    {
+      "name": "grid_existing_custom_depth_12_leaf_5",
+      "feature_set": "full_34",
+      "params": {
+        "n_estimators": 300,
+        "max_depth": 12,
+        "min_samples_leaf": 5,
+        "class_weight": {
+          "N": 1.0,
+          "S": 5.0,
+          "V": 1.0,
+          "F": 8.0,
+          "Q": 1.0
+        },
+        "max_features": "sqrt",
+        "random_state": 42
+      },
+      "metrics": {
+        "accuracy": 0.9529451879635155,
+        "macro_f1": 0.3967738605958499,
+        "per_class": {
+          "N": {
+            "precision": 0.9606697047751139,
+            "recall": 0.9979417515694144,
+            "f1": 0.9789510877795164,
+            "support": 9717
+          },
+          "S": {
+            "precision": 0.16,
+            "recall": 0.038461538461538464,
+            "f1": 0.06201550387596899,
+            "support": 104
+          },
+          "V": {
+            "precision": 0.9168734491315137,
+            "recall": 0.9704530531845043,
+            "f1": 0.9429027113237639,
+            "support": 1523
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 383
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4
+          }
+        },
+        "confusion_matrix": [
+          [
+            9697,
+            10,
+            10,
+            0,
+            0
+          ],
+          [
+            38,
+            4,
+            62,
+            0,
+            0
+          ],
+          [
+            34,
+            11,
+            1478,
+            0,
+            0
+          ],
+          [
+            322,
+            0,
+            61,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            1,
+            0,
+            0
+          ]
+        ]
+      },
+      "passes_predeclared_selection_rule": false
+    },
+    {
+      "name": "grid_S10_depth_None_leaf_3",
+      "feature_set": "full_34",
+      "params": {
+        "n_estimators": 300,
+        "max_depth": null,
+        "min_samples_leaf": 3,
+        "class_weight": {
+          "N": 1.0,
+          "S": 10.0,
+          "V": 1.0,
+          "F": 8.0,
+          "Q": 1.0
+        },
+        "max_features": "sqrt",
+        "random_state": 42
+      },
+      "metrics": {
+        "accuracy": 0.9550762935811099,
+        "macro_f1": 0.39833028446856916,
+        "per_class": {
+          "N": {
+            "precision": 0.9644135188866799,
+            "recall": 0.9984563136770608,
+            "f1": 0.9811397077413156,
+            "support": 9717
+          },
+          "S": {
+            "precision": 0.3333333333333333,
+            "recall": 0.038461538461538464,
+            "f1": 0.06896551724137931,
+            "support": 104
+          },
+          "V": {
+            "precision": 0.9029535864978903,
+            "recall": 0.9835850295469468,
+            "f1": 0.9415461973601509,
+            "support": 1523
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 383
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4
+          }
+        },
+        "confusion_matrix": [
+          [
+            9702,
+            5,
+            10,
+            0,
+            0
+          ],
+          [
+            18,
+            4,
+            82,
+            0,
+            0
+          ],
+          [
+            22,
+            3,
+            1498,
+            0,
+            0
+          ],
+          [
+            314,
+            0,
+            69,
+            0,
+            0
+          ],
+          [
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "passes_predeclared_selection_rule": false
+    },
+    {
+      "name": "grid_S10_depth_12_leaf_3",
+      "feature_set": "full_34",
+      "params": {
+        "n_estimators": 300,
+        "max_depth": 12,
+        "min_samples_leaf": 3,
+        "class_weight": {
+          "N": 1.0,
+          "S": 10.0,
+          "V": 1.0,
+          "F": 8.0,
+          "Q": 1.0
+        },
+        "max_features": "sqrt",
+        "random_state": 42
+      },
+      "metrics": {
+        "accuracy": 0.9530304321882193,
+        "macro_f1": 0.3955642741676952,
+        "per_class": {
+          "N": {
+            "precision": 0.9627643729520405,
+            "recall": 0.9978388391478852,
+            "f1": 0.9799878714372346,
+            "support": 9717
+          },
+          "S": {
+            "precision": 0.11428571428571428,
+            "recall": 0.038461538461538464,
+            "f1": 0.05755395683453238,
+            "support": 104
+          },
+          "V": {
+            "precision": 0.9107692307692308,
+            "recall": 0.9717662508207485,
+            "f1": 0.940279542566709,
+            "support": 1523
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 383
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4
+          }
+        },
+        "confusion_matrix": [
+          [
+            9696,
+            11,
+            10,
+            0,
+            0
+          ],
+          [
+            30,
+            4,
+            70,
+            0,
+            0
+          ],
+          [
+            23,
+            20,
+            1480,
+            0,
+            0
+          ],
+          [
+            318,
+            0,
+            65,
+            0,
+            0
+          ],
+          [
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "passes_predeclared_selection_rule": false
+    },
+    {
+      "name": "grid_S20_depth_None_leaf_3",
+      "feature_set": "full_34",
+      "params": {
+        "n_estimators": 300,
+        "max_depth": null,
+        "min_samples_leaf": 3,
+        "class_weight": {
+          "N": 1.0,
+          "S": 20.0,
+          "V": 1.0,
+          "F": 8.0,
+          "Q": 1.0
+        },
+        "max_features": "sqrt",
+        "random_state": 42
+      },
+      "metrics": {
+        "accuracy": 0.954650072457591,
+        "macro_f1": 0.39743804894653895,
+        "per_class": {
+          "N": {
+            "precision": 0.9639559130175752,
+            "recall": 0.9990737882062365,
+            "f1": 0.9812007277137659,
+            "support": 9717
+          },
+          "S": {
+            "precision": 0.26666666666666666,
+            "recall": 0.038461538461538464,
+            "f1": 0.06722689075630252,
+            "support": 104
+          },
+          "V": {
+            "precision": 0.903951367781155,
+            "recall": 0.9763624425476034,
+            "f1": 0.9387626262626263,
+            "support": 1523
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 383
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4
+          }
+        },
+        "confusion_matrix": [
+          [
+            9708,
+            5,
+            4,
+            0,
+            0
+          ],
+          [
+            31,
+            4,
+            69,
+            0,
+            0
+          ],
+          [
+            30,
+            6,
+            1487,
+            0,
+            0
+          ],
+          [
+            298,
+            0,
+            85,
+            0,
+            0
+          ],
+          [
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "passes_predeclared_selection_rule": false
+    },
+    {
+      "name": "grid_S20_depth_12_leaf_3",
+      "feature_set": "full_34",
+      "params": {
+        "n_estimators": 300,
+        "max_depth": 12,
+        "min_samples_leaf": 3,
+        "class_weight": {
+          "N": 1.0,
+          "S": 20.0,
+          "V": 1.0,
+          "F": 8.0,
+          "Q": 1.0
+        },
+        "max_features": "sqrt",
+        "random_state": 42
+      },
+      "metrics": {
+        "accuracy": 0.941692950302617,
+        "macro_f1": 0.3796751156564814,
+        "per_class": {
+          "N": {
+            "precision": 0.9636544190665343,
+            "recall": 0.9986621385201194,
+            "f1": 0.98084601000657,
+            "support": 9717
+          },
+          "S": {
+            "precision": 0.023668639053254437,
+            "recall": 0.038461538461538464,
+            "f1": 0.029304029304029304,
+            "support": 104
+          },
+          "V": {
+            "precision": 0.8974530831099196,
+            "recall": 0.8791858174655286,
+            "f1": 0.8882255389718077,
+            "support": 1523
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 383
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4
+          }
+        },
+        "confusion_matrix": [
+          [
+            9704,
+            10,
+            3,
+            0,
+            0
+          ],
+          [
+            28,
+            4,
+            72,
+            0,
+            0
+          ],
+          [
+            30,
+            154,
+            1339,
+            0,
+            0
+          ],
+          [
+            304,
+            1,
+            78,
+            0,
+            0
+          ],
+          [
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "passes_predeclared_selection_rule": false
+    },
+    {
+      "name": "feature_ablation_rr_only_4",
+      "feature_set": "rr_only_4",
+      "params": {
+        "n_estimators": 300,
+        "max_depth": null,
+        "min_samples_leaf": 1,
+        "class_weight": {
+          "N": 1.0,
+          "S": 5.0,
+          "V": 1.0,
+          "F": 8.0,
+          "Q": 1.0
+        },
+        "max_features": "sqrt",
+        "random_state": 42
+      },
+      "metrics": {
+        "accuracy": 0.8858579831216435,
+        "macro_f1": 0.34760548030411925,
+        "per_class": {
+          "N": {
+            "precision": 0.8959011060507482,
+            "recall": 0.9919728311207163,
+            "f1": 0.9414924789998046,
+            "support": 9717
+          },
+          "S": {
+            "precision": 0.13690476190476192,
+            "recall": 0.22115384615384615,
+            "f1": 0.16911764705882354,
+            "support": 104
+          },
+          "V": {
+            "precision": 0.9079601990049752,
+            "recall": 0.479317137229153,
+            "f1": 0.6274172754619682,
+            "support": 1523
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 383
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4
+          }
+        },
+        "confusion_matrix": [
+          [
+            9639,
+            24,
+            54,
+            0,
+            0
+          ],
+          [
+            63,
+            23,
+            18,
+            0,
+            0
+          ],
+          [
+            676,
+            117,
+            730,
+            0,
+            0
+          ],
+          [
+            377,
+            4,
+            2,
+            0,
+            0
+          ],
+          [
+            4,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "passes_predeclared_selection_rule": false
+    },
+    {
+      "name": "feature_ablation_waveform_only_30",
+      "feature_set": "waveform_only_30",
+      "params": {
+        "n_estimators": 300,
+        "max_depth": null,
+        "min_samples_leaf": 1,
+        "class_weight": {
+          "N": 1.0,
+          "S": 5.0,
+          "V": 1.0,
+          "F": 8.0,
+          "Q": 1.0
+        },
+        "max_features": "sqrt",
+        "random_state": 42
+      },
+      "metrics": {
+        "accuracy": 0.9332537720569432,
+        "macro_f1": 0.36997074416001496,
+        "per_class": {
+          "N": {
+            "precision": 0.9364374034003091,
+            "recall": 0.9976330143048265,
+            "f1": 0.9660670686132842,
+            "support": 9717
+          },
+          "S": {
+            "precision": 0.125,
+            "recall": 0.009615384615384616,
+            "f1": 0.017857142857142856,
+            "support": 104
+          },
+          "V": {
+            "precision": 0.9139314369073669,
+            "recall": 0.8227183191070256,
+            "f1": 0.8659295093296475,
+            "support": 1523
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 383
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4
+          }
+        },
+        "confusion_matrix": [
+          [
+            9694,
+            4,
+            19,
+            0,
+            0
+          ],
+          [
+            102,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            267,
+            3,
+            1253,
+            0,
+            0
+          ],
+          [
+            286,
+            0,
+            97,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            1,
+            0,
+            0
+          ]
+        ]
+      },
+      "passes_predeclared_selection_rule": false
+    }
+  ],
+  "ds1_s_distribution_by_record": [
+    {
+      "record": "101",
+      "n_beats": 1863,
+      "class_counts": {
+        "N": 1858,
+        "S": 3,
+        "V": 0,
+        "F": 0,
+        "Q": 2
+      },
+      "s_share": 0.001610305958132045
+    },
+    {
+      "record": "106",
+      "n_beats": 2025,
+      "class_counts": {
+        "N": 1505,
+        "S": 0,
+        "V": 520,
+        "F": 0,
+        "Q": 0
+      },
+      "s_share": 0.0
+    },
+    {
+      "record": "108",
+      "n_beats": 1761,
+      "class_counts": {
+        "N": 1738,
+        "S": 4,
+        "V": 17,
+        "F": 2,
+        "Q": 0
+      },
+      "s_share": 0.002271436683702442
+    },
+    {
+      "record": "109",
+      "n_beats": 2530,
+      "class_counts": {
+        "N": 2490,
+        "S": 0,
+        "V": 38,
+        "F": 2,
+        "Q": 0
+      },
+      "s_share": 0.0
+    },
+    {
+      "record": "112",
+      "n_beats": 2537,
+      "class_counts": {
+        "N": 2535,
+        "S": 2,
+        "V": 0,
+        "F": 0,
+        "Q": 0
+      },
+      "s_share": 0.0007883326763894363
+    },
+    {
+      "record": "114",
+      "n_beats": 1877,
+      "class_counts": {
+        "N": 1818,
+        "S": 12,
+        "V": 43,
+        "F": 4,
+        "Q": 0
+      },
+      "s_share": 0.006393180607352157
+    },
+    {
+      "record": "115",
+      "n_beats": 1951,
+      "class_counts": {
+        "N": 1951,
+        "S": 0,
+        "V": 0,
+        "F": 0,
+        "Q": 0
+      },
+      "s_share": 0.0
+    },
+    {
+      "record": "116",
+      "n_beats": 2410,
+      "class_counts": {
+        "N": 2300,
+        "S": 1,
+        "V": 109,
+        "F": 0,
+        "Q": 0
+      },
+      "s_share": 0.0004149377593360996
+    },
+    {
+      "record": "118",
+      "n_beats": 2276,
+      "class_counts": {
+        "N": 2164,
+        "S": 96,
+        "V": 16,
+        "F": 0,
+        "Q": 0
+      },
+      "s_share": 0.0421792618629174
+    },
+    {
+      "record": "119",
+      "n_beats": 1985,
+      "class_counts": {
+        "N": 1541,
+        "S": 0,
+        "V": 444,
+        "F": 0,
+        "Q": 0
+      },
+      "s_share": 0.0
+    },
+    {
+      "record": "121",
+      "n_beats": 1861,
+      "class_counts": {
+        "N": 1859,
+        "S": 1,
+        "V": 1,
+        "F": 0,
+        "Q": 0
+      },
+      "s_share": 0.0005373455131649651
+    },
+    {
+      "record": "122",
+      "n_beats": 2474,
+      "class_counts": {
+        "N": 2474,
+        "S": 0,
+        "V": 0,
+        "F": 0,
+        "Q": 0
+      },
+      "s_share": 0.0
+    },
+    {
+      "record": "124",
+      "n_beats": 1617,
+      "class_counts": {
+        "N": 1534,
+        "S": 31,
+        "V": 47,
+        "F": 5,
+        "Q": 0
+      },
+      "s_share": 0.0191713048855906
+    },
+    {
+      "record": "201",
+      "n_beats": 1961,
+      "class_counts": {
+        "N": 1633,
+        "S": 128,
+        "V": 198,
+        "F": 2,
+        "Q": 0
+      },
+      "s_share": 0.06527281998980113
+    },
+    {
+      "record": "203",
+      "n_beats": 2978,
+      "class_counts": {
+        "N": 2527,
+        "S": 2,
+        "V": 444,
+        "F": 1,
+        "Q": 4
+      },
+      "s_share": 0.000671591672263264
+    },
+    {
+      "record": "205",
+      "n_beats": 2654,
+      "class_counts": {
+        "N": 2569,
+        "S": 3,
+        "V": 71,
+        "F": 11,
+        "Q": 0
+      },
+      "s_share": 0.0011303692539562924
+    },
+    {
+      "record": "207",
+      "n_beats": 1858,
+      "class_counts": {
+        "N": 1542,
+        "S": 106,
+        "V": 210,
+        "F": 0,
+        "Q": 0
+      },
+      "s_share": 0.05705059203444564
+    },
+    {
+      "record": "208",
+      "n_beats": 2953,
+      "class_counts": {
+        "N": 1585,
+        "S": 2,
+        "V": 992,
+        "F": 372,
+        "Q": 2
+      },
+      "s_share": 0.0006772773450728074
+    },
+    {
+      "record": "209",
+      "n_beats": 3003,
+      "class_counts": {
+        "N": 2619,
+        "S": 383,
+        "V": 1,
+        "F": 0,
+        "Q": 0
+      },
+      "s_share": 0.12753912753912755
+    },
+    {
+      "record": "215",
+      "n_beats": 3361,
+      "class_counts": {
+        "N": 3193,
+        "S": 3,
+        "V": 164,
+        "F": 1,
+        "Q": 0
+      },
+      "s_share": 0.0008925914906277894
+    },
+    {
+      "record": "220",
+      "n_beats": 2046,
+      "class_counts": {
+        "N": 1952,
+        "S": 94,
+        "V": 0,
+        "F": 0,
+        "Q": 0
+      },
+      "s_share": 0.04594330400782014
+    },
+    {
+      "record": "223",
+      "n_beats": 2603,
+      "class_counts": {
+        "N": 2043,
+        "S": 73,
+        "V": 473,
+        "F": 14,
+        "Q": 0
+      },
+      "s_share": 0.028044563964656165
+    },
+    {
+      "record": "230",
+      "n_beats": 2254,
+      "class_counts": {
+        "N": 2253,
+        "S": 0,
+        "V": 1,
+        "F": 0,
+        "Q": 0
+      },
+      "s_share": 0.0
+    }
+  ],
+  "ds1_validation_metrics_by_record": [
+    {
+      "record": "101",
+      "n_beats": 1863,
+      "accuracy": 0.9978529253891573,
+      "macro_f1": 0.2998386663081473,
+      "per_class": {
+        "N": {
+          "precision": 0.9983879634605051,
+          "recall": 1.0,
+          "f1": 0.9991933315407368,
+          "support": 1858
+        },
+        "S": {
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "f1": 0.5,
+          "support": 3
+        },
+        "V": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "F": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "Q": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        }
+      },
+      "confusion_matrix": [
+        [
+          1858,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "record": "118",
+      "n_beats": 2276,
+      "accuracy": 0.953427065026362,
+      "macro_f1": 0.24669526009017922,
+      "per_class": {
+        "N": {
+          "precision": 0.9949215143120961,
+          "recall": 0.9958410351201479,
+          "f1": 0.9953810623556582,
+          "support": 2164
+        },
+        "S": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 96
+        },
+        "V": {
+          "precision": 0.13636363636363635,
+          "recall": 0.9375,
+          "f1": 0.23809523809523808,
+          "support": 16
+        },
+        "F": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "Q": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "confusion_matrix": [
+        [
+          2155,
+          0,
+          9,
+          0,
+          0
+        ],
+        [
+          10,
+          0,
+          86,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          15,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "record": "119",
+      "n_beats": 1985,
+      "accuracy": 1.0,
+      "macro_f1": 0.4,
+      "per_class": {
+        "N": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1541
+        },
+        "S": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "V": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 444
+        },
+        "F": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "Q": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "confusion_matrix": [
+        [
+          1541,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          444,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "record": "205",
+      "n_beats": 2654,
+      "accuracy": 0.9932177844762623,
+      "macro_f1": 0.5889314139585669,
+      "per_class": {
+        "N": {
+          "precision": 0.9930421337456513,
+          "recall": 1.0,
+          "f1": 0.9965089216446859,
+          "support": 2569
+        },
+        "S": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 3
+        },
+        "V": {
+          "precision": 1.0,
+          "recall": 0.9014084507042254,
+          "f1": 0.9481481481481482,
+          "support": 71
+        },
+        "F": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 11
+        },
+        "Q": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "confusion_matrix": [
+        [
+          2569,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          0,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          64,
+          0,
+          0
+        ],
+        [
+          11,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "record": "208",
+      "n_beats": 2953,
+      "accuracy": 0.8679309177108026,
+      "macro_f1": 0.37329919003202694,
+      "per_class": {
+        "N": {
+          "precision": 0.8336842105263158,
+          "recall": 0.9993690851735015,
+          "f1": 0.909038737446198,
+          "support": 1585
+        },
+        "S": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        },
+        "V": {
+          "precision": 0.929724596391263,
+          "recall": 0.9868951612903226,
+          "f1": 0.9574572127139365,
+          "support": 992
+        },
+        "F": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 372
+        },
+        "Q": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        }
+      },
+      "confusion_matrix": [
+        [
+          1584,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          13,
+          0,
+          979,
+          0,
+          0
+        ],
+        [
+          299,
+          0,
+          73,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    }
+  ],
+  "validation_s_probability_by_true_class": {
+    "N": {
+      "support": 9717,
+      "mean": 0.012861308359919043,
+      "quantiles_0_25_50_75_90_100": [
+        0.0,
+        0.0033333333333333335,
+        0.006666666666666667,
+        0.01,
+        0.023333333333333334,
+        0.4166666666666667
+      ]
+    },
+    "S": {
+      "support": 104,
+      "mean": 0.11371794871794873,
+      "quantiles_0_25_50_75_90_100": [
+        0.023333333333333334,
+        0.05333333333333334,
+        0.09,
+        0.11416666666666667,
+        0.18033333333333335,
+        0.7266666666666667
+      ]
+    },
+    "V": {
+      "support": 1523,
+      "mean": 0.14746115123659442,
+      "quantiles_0_25_50_75_90_100": [
+        0.0,
+        0.08666666666666667,
+        0.14666666666666667,
+        0.21,
+        0.24,
+        0.3466666666666667
+      ]
+    },
+    "F": {
+      "support": 383,
+      "mean": 0.060382941688424716,
+      "quantiles_0_25_50_75_90_100": [
+        0.0,
+        0.023333333333333334,
+        0.05,
+        0.08333333333333333,
+        0.12933333333333338,
+        0.27
+      ]
+    },
+    "Q": {
+      "support": 4,
+      "mean": 0.051666666666666666,
+      "quantiles_0_25_50_75_90_100": [
+        0.016666666666666666,
+        0.029166666666666667,
+        0.05333333333333333,
+        0.07583333333333334,
+        0.08033333333333333,
+        0.08333333333333333
+      ]
+    }
+  },
+  "feature_importance": [
+    {
+      "feature": "rr_prev / rr_local",
+      "importance": 0.14803819379170224
+    },
+    {
+      "feature": "rr_prev",
+      "importance": 0.14731947723564448
+    },
+    {
+      "feature": "rr_next",
+      "importance": 0.06837398540711746
+    },
+    {
+      "feature": "rr_next / rr_local",
+      "importance": 0.05633364668627763
+    },
+    {
+      "feature": "wave[-1]",
+      "importance": 0.04653547515786466
+    },
+    {
+      "feature": "wave[68]",
+      "importance": 0.03189494866468163
+    },
+    {
+      "feature": "wave[6]",
+      "importance": 0.030260879454581075
+    },
+    {
+      "feature": "wave[20]",
+      "importance": 0.027687678217867644
+    },
+    {
+      "feature": "wave[-15]",
+      "importance": 0.02610033560135151
+    },
+    {
+      "feature": "wave[-90]",
+      "importance": 0.025728135466122213
+    },
+    {
+      "feature": "wave[13]",
+      "importance": 0.023240833935698795
+    },
+    {
+      "feature": "wave[-21]",
+      "importance": 0.0227485995320304
+    },
+    {
+      "feature": "wave[61]",
+      "importance": 0.022229994562953877
+    },
+    {
+      "feature": "wave[27]",
+      "importance": 0.02195683679932977
+    },
+    {
+      "feature": "wave[75]",
+      "importance": 0.021414004053594077
+    },
+    {
+      "feature": "wave[95]",
+      "importance": 0.02056418891412628
+    },
+    {
+      "feature": "wave[102]",
+      "importance": 0.020460404756180484
+    },
+    {
+      "feature": "wave[-8]",
+      "importance": 0.01922481412800319
+    },
+    {
+      "feature": "wave[-28]",
+      "importance": 0.017469648159432534
+    },
+    {
+      "feature": "wave[34]",
+      "importance": 0.016814711316971785
+    },
+    {
+      "feature": "wave[-83]",
+      "importance": 0.015627936516787375
+    },
+    {
+      "feature": "wave[82]",
+      "importance": 0.014982148969240723
+    },
+    {
+      "feature": "wave[-35]",
+      "importance": 0.014867649454495455
+    },
+    {
+      "feature": "wave[88]",
+      "importance": 0.014418937439918967
+    },
+    {
+      "feature": "wave[-76]",
+      "importance": 0.014410989022063747
+    },
+    {
+      "feature": "wave[54]",
+      "importance": 0.014111901750666019
+    },
+    {
+      "feature": "wave[40]",
+      "importance": 0.01382086514542544
+    },
+    {
+      "feature": "wave[109]",
+      "importance": 0.013564827694848642
+    },
+    {
+      "feature": "wave[-69]",
+      "importance": 0.013541859361445597
+    },
+    {
+      "feature": "wave[-56]",
+      "importance": 0.011510011736855317
+    },
+    {
+      "feature": "wave[-49]",
+      "importance": 0.011464451718216074
+    },
+    {
+      "feature": "wave[47]",
+      "importance": 0.011290177916222669
+    },
+    {
+      "feature": "wave[-42]",
+      "importance": 0.011119037062267348
+    },
+    {
+      "feature": "wave[-63]",
+      "importance": 0.010872414370014896
+    }
+  ],
+  "feature_group_importance": {
+    "RR (4 features)": 0.42006530312074186,
+    "waveform (30 features)": 0.5799346968792582
+  }
+}

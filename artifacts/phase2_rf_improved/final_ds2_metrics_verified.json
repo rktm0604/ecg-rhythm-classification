@@ -1,0 +1,3539 @@
+{
+  "verification": "independently recomputed from predictions_ds2.npz; no model inference",
+  "n_test_beats": 45673,
+  "existing_phase2_rf": {
+    "accuracy": 0.9444091695312329,
+    "macro_f1_all_five_classes": 0.38595846210742474,
+    "macro_f1_classes_with_true_support": 0.38595846210742474,
+    "classes_with_true_support": [
+      "N",
+      "S",
+      "V",
+      "F",
+      "Q"
+    ],
+    "per_class": {
+      "N": {
+        "precision": 0.9586616993838659,
+        "recall": 0.9961042183622829,
+        "f1": 0.9770243629371821,
+        "support": 40300
+      },
+      "S": {
+        "precision": 0.5508021390374331,
+        "recall": 0.05786516853932584,
+        "f1": 0.10472801220132182,
+        "support": 1780
+      },
+      "V": {
+        "precision": 0.7995570321151716,
+        "recall": 0.9027821194123163,
+        "f1": 0.8480399353986199,
+        "support": 3199
+      },
+      "F": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 387
+      },
+      "Q": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 7
+      }
+    },
+    "confusion_matrix": [
+      [
+        40143,
+        79,
+        78,
+        0,
+        0
+      ],
+      [
+        1041,
+        103,
+        636,
+        0,
+        0
+      ],
+      [
+        306,
+        5,
+        2888,
+        0,
+        0
+      ],
+      [
+        378,
+        0,
+        9,
+        0,
+        0
+      ],
+      [
+        6,
+        0,
+        1,
+        0,
+        0
+      ]
+    ]
+  },
+  "selected_rf": {
+    "accuracy": 0.9444091695312329,
+    "macro_f1_all_five_classes": 0.38595846210742474,
+    "macro_f1_classes_with_true_support": 0.38595846210742474,
+    "classes_with_true_support": [
+      "N",
+      "S",
+      "V",
+      "F",
+      "Q"
+    ],
+    "per_class": {
+      "N": {
+        "precision": 0.9586616993838659,
+        "recall": 0.9961042183622829,
+        "f1": 0.9770243629371821,
+        "support": 40300
+      },
+      "S": {
+        "precision": 0.5508021390374331,
+        "recall": 0.05786516853932584,
+        "f1": 0.10472801220132182,
+        "support": 1780
+      },
+      "V": {
+        "precision": 0.7995570321151716,
+        "recall": 0.9027821194123163,
+        "f1": 0.8480399353986199,
+        "support": 3199
+      },
+      "F": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 387
+      },
+      "Q": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 7
+      }
+    },
+    "confusion_matrix": [
+      [
+        40143,
+        79,
+        78,
+        0,
+        0
+      ],
+      [
+        1041,
+        103,
+        636,
+        0,
+        0
+      ],
+      [
+        306,
+        5,
+        2888,
+        0,
+        0
+      ],
+      [
+        378,
+        0,
+        9,
+        0,
+        0
+      ],
+      [
+        6,
+        0,
+        1,
+        0,
+        0
+      ]
+    ]
+  },
+  "record_232": {
+    "n_beats": 1778,
+    "existing": {
+      "accuracy": 0.21991001124859394,
+      "macro_f1_all_five_classes": 0.10064350064350065,
+      "macro_f1_classes_with_true_support": 0.2516087516087516,
+      "classes_with_true_support": [
+        "N",
+        "S"
+      ],
+      "per_class": {
+        "N": {
+          "precision": 0.337942955920484,
+          "recall": 0.9848866498740554,
+          "f1": 0.5032175032175032,
+          "support": 397
+        },
+        "S": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1381
+        },
+        "V": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "F": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "Q": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "confusion_matrix": [
+        [
+          391,
+          0,
+          6,
+          0,
+          0
+        ],
+        [
+          766,
+          0,
+          615,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "selected": {
+      "accuracy": 0.21991001124859394,
+      "macro_f1_all_five_classes": 0.10064350064350065,
+      "macro_f1_classes_with_true_support": 0.2516087516087516,
+      "classes_with_true_support": [
+        "N",
+        "S"
+      ],
+      "per_class": {
+        "N": {
+          "precision": 0.337942955920484,
+          "recall": 0.9848866498740554,
+          "f1": 0.5032175032175032,
+          "support": 397
+        },
+        "S": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1381
+        },
+        "V": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "F": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "Q": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      },
+      "confusion_matrix": [
+        [
+          391,
+          0,
+          6,
+          0,
+          0
+        ],
+        [
+          766,
+          0,
+          615,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    }
+  },
+  "record_metrics": {
+    "100": {
+      "n_beats": 2271,
+      "existing": {
+        "accuracy": 0.9995596653456627,
+        "macro_f1_all_five_classes": 0.5968783841856468,
+        "macro_f1_classes_with_true_support": 0.9947973069760779,
+        "classes_with_true_support": [
+          "N",
+          "S",
+          "V"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9995531724754245,
+            "recall": 1.0,
+            "f1": 0.9997765363128491,
+            "support": 2237
+          },
+          "S": {
+            "precision": 1.0,
+            "recall": 0.9696969696969697,
+            "f1": 0.9846153846153847,
+            "support": 33
+          },
+          "V": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2237,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            32,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selected": {
+        "accuracy": 0.9995596653456627,
+        "macro_f1_all_five_classes": 0.5968783841856468,
+        "macro_f1_classes_with_true_support": 0.9947973069760779,
+        "classes_with_true_support": [
+          "N",
+          "S",
+          "V"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9995531724754245,
+            "recall": 1.0,
+            "f1": 0.9997765363128491,
+            "support": 2237
+          },
+          "S": {
+            "precision": 1.0,
+            "recall": 0.9696969696969697,
+            "f1": 0.9846153846153847,
+            "support": 33
+          },
+          "V": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2237,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            32,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "103": {
+      "n_beats": 2082,
+      "existing": {
+        "accuracy": 0.9990393852065321,
+        "macro_f1_all_five_classes": 0.19990389235944256,
+        "macro_f1_classes_with_true_support": 0.4997597308986064,
+        "classes_with_true_support": [
+          "N",
+          "S"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9990393852065321,
+            "recall": 1.0,
+            "f1": 0.9995194617972128,
+            "support": 2080
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "V": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2080,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selected": {
+        "accuracy": 0.9990393852065321,
+        "macro_f1_all_five_classes": 0.19990389235944256,
+        "macro_f1_classes_with_true_support": 0.4997597308986064,
+        "classes_with_true_support": [
+          "N",
+          "S"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9990393852065321,
+            "recall": 1.0,
+            "f1": 0.9995194617972128,
+            "support": 2080
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "V": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2080,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "105": {
+      "n_beats": 2570,
+      "existing": {
+        "accuracy": 0.9863813229571985,
+        "macro_f1_all_five_classes": 0.3160287276800422,
+        "macro_f1_classes_with_true_support": 0.5267145461334036,
+        "classes_with_true_support": [
+          "N",
+          "V",
+          "Q"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9913214990138067,
+            "recall": 0.9956418383518225,
+            "f1": 0.9934769717335442,
+            "support": 2524
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "V": {
+            "precision": 0.6470588235294118,
+            "recall": 0.5365853658536586,
+            "f1": 0.5866666666666667,
+            "support": 41
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 5
+          }
+        },
+        "confusion_matrix": [
+          [
+            2513,
+            0,
+            11,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            18,
+            1,
+            22,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            4,
+            0,
+            1,
+            0,
+            0
+          ]
+        ]
+      },
+      "selected": {
+        "accuracy": 0.9863813229571985,
+        "macro_f1_all_five_classes": 0.3160287276800422,
+        "macro_f1_classes_with_true_support": 0.5267145461334036,
+        "classes_with_true_support": [
+          "N",
+          "V",
+          "Q"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9913214990138067,
+            "recall": 0.9956418383518225,
+            "f1": 0.9934769717335442,
+            "support": 2524
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "V": {
+            "precision": 0.6470588235294118,
+            "recall": 0.5365853658536586,
+            "f1": 0.5866666666666667,
+            "support": 41
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 5
+          }
+        },
+        "confusion_matrix": [
+          [
+            2513,
+            0,
+            11,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            18,
+            1,
+            22,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            4,
+            0,
+            1,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "111": {
+      "n_beats": 2122,
+      "existing": {
+        "accuracy": 0.9990574929311969,
+        "macro_f1_all_five_classes": 0.2999056603773585,
+        "macro_f1_classes_with_true_support": 0.7497641509433962,
+        "classes_with_true_support": [
+          "N",
+          "V"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 1.0,
+            "recall": 0.9990570485619991,
+            "f1": 0.9995283018867924,
+            "support": 2121
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "V": {
+            "precision": 0.3333333333333333,
+            "recall": 1.0,
+            "f1": 0.5,
+            "support": 1
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2119,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selected": {
+        "accuracy": 0.9990574929311969,
+        "macro_f1_all_five_classes": 0.2999056603773585,
+        "macro_f1_classes_with_true_support": 0.7497641509433962,
+        "classes_with_true_support": [
+          "N",
+          "V"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 1.0,
+            "recall": 0.9990570485619991,
+            "f1": 0.9995283018867924,
+            "support": 2121
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "V": {
+            "precision": 0.3333333333333333,
+            "recall": 1.0,
+            "f1": 0.5,
+            "support": 1
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2119,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "113": {
+      "n_beats": 1793,
+      "existing": {
+        "accuracy": 1.0,
+        "macro_f1_all_five_classes": 0.4,
+        "macro_f1_classes_with_true_support": 1.0,
+        "classes_with_true_support": [
+          "N",
+          "S"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1787
+          },
+          "S": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 6
+          },
+          "V": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            1787,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selected": {
+        "accuracy": 1.0,
+        "macro_f1_all_five_classes": 0.4,
+        "macro_f1_classes_with_true_support": 1.0,
+        "classes_with_true_support": [
+          "N",
+          "S"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1787
+          },
+          "S": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 6
+          },
+          "V": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            1787,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "117": {
+      "n_beats": 1533,
+      "existing": {
+        "accuracy": 0.9993476842791911,
+        "macro_f1_all_five_classes": 0.2,
+        "macro_f1_classes_with_true_support": 0.5,
+        "classes_with_true_support": [
+          "N",
+          "S"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1532
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 1
+          },
+          "V": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            1532,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selected": {
+        "accuracy": 0.9993476842791911,
+        "macro_f1_all_five_classes": 0.2,
+        "macro_f1_classes_with_true_support": 0.5,
+        "classes_with_true_support": [
+          "N",
+          "S"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 1532
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 1
+          },
+          "V": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            1532,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "123": {
+      "n_beats": 1516,
+      "existing": {
+        "accuracy": 0.9986807387862797,
+        "macro_f1_all_five_classes": 0.3998677248677248,
+        "macro_f1_classes_with_true_support": 0.9996693121693121,
+        "classes_with_true_support": [
+          "N",
+          "V"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 1.0,
+            "recall": 0.998678122934567,
+            "f1": 0.9993386243386243,
+            "support": 1513
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "V": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 3
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            1511,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selected": {
+        "accuracy": 0.9986807387862797,
+        "macro_f1_all_five_classes": 0.3998677248677248,
+        "macro_f1_classes_with_true_support": 0.9996693121693121,
+        "classes_with_true_support": [
+          "N",
+          "V"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 1.0,
+            "recall": 0.998678122934567,
+            "f1": 0.9993386243386243,
+            "support": 1513
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "V": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 3
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            1511,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "200": {
+      "n_beats": 2599,
+      "existing": {
+        "accuracy": 0.972297037322047,
+        "macro_f1_all_five_classes": 0.4027184857491763,
+        "macro_f1_classes_with_true_support": 0.5033981071864704,
+        "classes_with_true_support": [
+          "N",
+          "S",
+          "V",
+          "F"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9624309392265193,
+            "recall": 1.0,
+            "f1": 0.9808558558558559,
+            "support": 1742
+          },
+          "S": {
+            "precision": 0.25,
+            "recall": 0.03333333333333333,
+            "f1": 0.058823529411764705,
+            "support": 30
+          },
+          "V": {
+            "precision": 0.9987261146496815,
+            "recall": 0.9503030303030303,
+            "f1": 0.9739130434782609,
+            "support": 825
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            1742,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            28,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            38,
+            3,
+            784,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selected": {
+        "accuracy": 0.972297037322047,
+        "macro_f1_all_five_classes": 0.4027184857491763,
+        "macro_f1_classes_with_true_support": 0.5033981071864704,
+        "classes_with_true_support": [
+          "N",
+          "S",
+          "V",
+          "F"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9624309392265193,
+            "recall": 1.0,
+            "f1": 0.9808558558558559,
+            "support": 1742
+          },
+          "S": {
+            "precision": 0.25,
+            "recall": 0.03333333333333333,
+            "f1": 0.058823529411764705,
+            "support": 30
+          },
+          "V": {
+            "precision": 0.9987261146496815,
+            "recall": 0.9503030303030303,
+            "f1": 0.9739130434782609,
+            "support": 825
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            1742,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            28,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            38,
+            3,
+            784,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "210": {
+      "n_beats": 2648,
+      "existing": {
+        "accuracy": 0.9690332326283988,
+        "macro_f1_all_five_classes": 0.3689489506300698,
+        "macro_f1_classes_with_true_support": 0.4611861882875873,
+        "classes_with_true_support": [
+          "N",
+          "S",
+          "V",
+          "F"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9741205014152851,
+            "recall": 0.9950433705080545,
+            "f1": 0.9844707805476093,
+            "support": 2421
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 22
+          },
+          "V": {
+            "precision": 0.9235294117647059,
+            "recall": 0.8051282051282052,
+            "f1": 0.8602739726027397,
+            "support": 195
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 10
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2409,
+            4,
+            8,
+            0,
+            0
+          ],
+          [
+            18,
+            0,
+            4,
+            0,
+            0
+          ],
+          [
+            37,
+            1,
+            157,
+            0,
+            0
+          ],
+          [
+            9,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selected": {
+        "accuracy": 0.9690332326283988,
+        "macro_f1_all_five_classes": 0.3689489506300698,
+        "macro_f1_classes_with_true_support": 0.4611861882875873,
+        "classes_with_true_support": [
+          "N",
+          "S",
+          "V",
+          "F"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9741205014152851,
+            "recall": 0.9950433705080545,
+            "f1": 0.9844707805476093,
+            "support": 2421
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 22
+          },
+          "V": {
+            "precision": 0.9235294117647059,
+            "recall": 0.8051282051282052,
+            "f1": 0.8602739726027397,
+            "support": 195
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 10
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2409,
+            4,
+            8,
+            0,
+            0
+          ],
+          [
+            18,
+            0,
+            4,
+            0,
+            0
+          ],
+          [
+            37,
+            1,
+            157,
+            0,
+            0
+          ],
+          [
+            9,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "212": {
+      "n_beats": 2746,
+      "existing": {
+        "accuracy": 1.0,
+        "macro_f1_all_five_classes": 0.2,
+        "macro_f1_classes_with_true_support": 1.0,
+        "classes_with_true_support": [
+          "N"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2746
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "V": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2746,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selected": {
+        "accuracy": 1.0,
+        "macro_f1_all_five_classes": 0.2,
+        "macro_f1_classes_with_true_support": 1.0,
+        "classes_with_true_support": [
+          "N"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2746
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "V": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2746,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "213": {
+      "n_beats": 3249,
+      "existing": {
+        "accuracy": 0.855647891658972,
+        "macro_f1_all_five_classes": 0.3379367444941216,
+        "macro_f1_classes_with_true_support": 0.42242093061765196,
+        "classes_with_true_support": [
+          "N",
+          "S",
+          "V",
+          "F"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.8504672897196262,
+            "recall": 1.0,
+            "f1": 0.9191919191919192,
+            "support": 2639
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 28
+          },
+          "V": {
+            "precision": 0.9657534246575342,
+            "recall": 0.6409090909090909,
+            "f1": 0.7704918032786885,
+            "support": 220
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 362
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2639,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            26,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            79,
+            0,
+            141,
+            0,
+            0
+          ],
+          [
+            359,
+            0,
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selected": {
+        "accuracy": 0.855647891658972,
+        "macro_f1_all_five_classes": 0.3379367444941216,
+        "macro_f1_classes_with_true_support": 0.42242093061765196,
+        "classes_with_true_support": [
+          "N",
+          "S",
+          "V",
+          "F"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.8504672897196262,
+            "recall": 1.0,
+            "f1": 0.9191919191919192,
+            "support": 2639
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 28
+          },
+          "V": {
+            "precision": 0.9657534246575342,
+            "recall": 0.6409090909090909,
+            "f1": 0.7704918032786885,
+            "support": 220
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 362
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2639,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            26,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            79,
+            0,
+            141,
+            0,
+            0
+          ],
+          [
+            359,
+            0,
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "214": {
+      "n_beats": 2260,
+      "existing": {
+        "accuracy": 0.9699115044247788,
+        "macro_f1_all_five_classes": 0.3680804670464936,
+        "macro_f1_classes_with_true_support": 0.460100583808117,
+        "classes_with_true_support": [
+          "N",
+          "V",
+          "F",
+          "Q"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9689471130519165,
+            "recall": 0.9980009995002499,
+            "f1": 0.983259478089611,
+            "support": 2001
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "V": {
+            "precision": 0.9798994974874372,
+            "recall": 0.76171875,
+            "f1": 0.8571428571428571,
+            "support": 256
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 1
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          }
+        },
+        "confusion_matrix": [
+          [
+            1997,
+            0,
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            61,
+            0,
+            195,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selected": {
+        "accuracy": 0.9699115044247788,
+        "macro_f1_all_five_classes": 0.3680804670464936,
+        "macro_f1_classes_with_true_support": 0.460100583808117,
+        "classes_with_true_support": [
+          "N",
+          "V",
+          "F",
+          "Q"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9689471130519165,
+            "recall": 0.9980009995002499,
+            "f1": 0.983259478089611,
+            "support": 2001
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "V": {
+            "precision": 0.9798994974874372,
+            "recall": 0.76171875,
+            "f1": 0.8571428571428571,
+            "support": 256
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 1
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          }
+        },
+        "confusion_matrix": [
+          [
+            1997,
+            0,
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            61,
+            0,
+            195,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "219": {
+      "n_beats": 2152,
+      "existing": {
+        "accuracy": 0.9716542750929368,
+        "macro_f1_all_five_classes": 0.376980764561255,
+        "macro_f1_classes_with_true_support": 0.4712259557015688,
+        "classes_with_true_support": [
+          "N",
+          "S",
+          "V",
+          "F"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9941291585127201,
+            "recall": 0.9769230769230769,
+            "f1": 0.98545101842871,
+            "support": 2080
+          },
+          "S": {
+            "precision": 0.027777777777777776,
+            "recall": 0.14285714285714285,
+            "f1": 0.046511627906976744,
+            "support": 7
+          },
+          "V": {
+            "precision": 0.8055555555555556,
+            "recall": 0.90625,
+            "f1": 0.8529411764705882,
+            "support": 64
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 1
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2032,
+            35,
+            13,
+            0,
+            0
+          ],
+          [
+            6,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            6,
+            0,
+            58,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selected": {
+        "accuracy": 0.9716542750929368,
+        "macro_f1_all_five_classes": 0.376980764561255,
+        "macro_f1_classes_with_true_support": 0.4712259557015688,
+        "classes_with_true_support": [
+          "N",
+          "S",
+          "V",
+          "F"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9941291585127201,
+            "recall": 0.9769230769230769,
+            "f1": 0.98545101842871,
+            "support": 2080
+          },
+          "S": {
+            "precision": 0.027777777777777776,
+            "recall": 0.14285714285714285,
+            "f1": 0.046511627906976744,
+            "support": 7
+          },
+          "V": {
+            "precision": 0.8055555555555556,
+            "recall": 0.90625,
+            "f1": 0.8529411764705882,
+            "support": 64
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 1
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2032,
+            35,
+            13,
+            0,
+            0
+          ],
+          [
+            6,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            6,
+            0,
+            58,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "221": {
+      "n_beats": 2425,
+      "existing": {
+        "accuracy": 1.0,
+        "macro_f1_all_five_classes": 0.4,
+        "macro_f1_classes_with_true_support": 1.0,
+        "classes_with_true_support": [
+          "N",
+          "V"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2029
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "V": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 396
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2029,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            396,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selected": {
+        "accuracy": 1.0,
+        "macro_f1_all_five_classes": 0.4,
+        "macro_f1_classes_with_true_support": 1.0,
+        "classes_with_true_support": [
+          "N",
+          "V"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 2029
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "V": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 396
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2029,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            396,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "222": {
+      "n_beats": 2481,
+      "existing": {
+        "accuracy": 0.9218057234985892,
+        "macro_f1_all_five_classes": 0.2722761596548004,
+        "macro_f1_classes_with_true_support": 0.680690399137001,
+        "classes_with_true_support": [
+          "N",
+          "S"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9415996614473128,
+            "recall": 0.9793133802816901,
+            "f1": 0.9600862998921251,
+            "support": 2272
+          },
+          "S": {
+            "precision": 0.62,
+            "recall": 0.2966507177033493,
+            "f1": 0.40129449838187703,
+            "support": 209
+          },
+          "V": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2225,
+            38,
+            9,
+            0,
+            0
+          ],
+          [
+            138,
+            62,
+            9,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selected": {
+        "accuracy": 0.9218057234985892,
+        "macro_f1_all_five_classes": 0.2722761596548004,
+        "macro_f1_classes_with_true_support": 0.680690399137001,
+        "classes_with_true_support": [
+          "N",
+          "S"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9415996614473128,
+            "recall": 0.9793133802816901,
+            "f1": 0.9600862998921251,
+            "support": 2272
+          },
+          "S": {
+            "precision": 0.62,
+            "recall": 0.2966507177033493,
+            "f1": 0.40129449838187703,
+            "support": 209
+          },
+          "V": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2225,
+            38,
+            9,
+            0,
+            0
+          ],
+          [
+            138,
+            62,
+            9,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "228": {
+      "n_beats": 2051,
+      "existing": {
+        "accuracy": 0.9917113603120429,
+        "macro_f1_all_five_classes": 0.3950530922329492,
+        "macro_f1_classes_with_true_support": 0.6584218203882487,
+        "classes_with_true_support": [
+          "N",
+          "S",
+          "V"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9900176159718145,
+            "recall": 1.0,
+            "f1": 0.9949837710239009,
+            "support": 1686
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 3
+          },
+          "V": {
+            "precision": 1.0,
+            "recall": 0.9613259668508287,
+            "f1": 0.9802816901408451,
+            "support": 362
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            1686,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            14,
+            0,
+            348,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selected": {
+        "accuracy": 0.9917113603120429,
+        "macro_f1_all_five_classes": 0.3950530922329492,
+        "macro_f1_classes_with_true_support": 0.6584218203882487,
+        "classes_with_true_support": [
+          "N",
+          "S",
+          "V"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9900176159718145,
+            "recall": 1.0,
+            "f1": 0.9949837710239009,
+            "support": 1686
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 3
+          },
+          "V": {
+            "precision": 1.0,
+            "recall": 0.9613259668508287,
+            "f1": 0.9802816901408451,
+            "support": 362
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            1686,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            14,
+            0,
+            348,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "231": {
+      "n_beats": 1569,
+      "existing": {
+        "accuracy": 0.994263862332696,
+        "macro_f1_all_five_classes": 0.199424736337488,
+        "macro_f1_classes_with_true_support": 0.33237456056248,
+        "classes_with_true_support": [
+          "N",
+          "S",
+          "V"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9980806142034548,
+            "recall": 0.9961685823754789,
+            "f1": 0.99712368168744,
+            "support": 1566
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 1
+          },
+          "V": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            1560,
+            0,
+            6,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selected": {
+        "accuracy": 0.994263862332696,
+        "macro_f1_all_five_classes": 0.199424736337488,
+        "macro_f1_classes_with_true_support": 0.33237456056248,
+        "classes_with_true_support": [
+          "N",
+          "S",
+          "V"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9980806142034548,
+            "recall": 0.9961685823754789,
+            "f1": 0.99712368168744,
+            "support": 1566
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 1
+          },
+          "V": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 2
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            1560,
+            0,
+            6,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "232": {
+      "n_beats": 1778,
+      "existing": {
+        "accuracy": 0.21991001124859394,
+        "macro_f1_all_five_classes": 0.10064350064350065,
+        "macro_f1_classes_with_true_support": 0.2516087516087516,
+        "classes_with_true_support": [
+          "N",
+          "S"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.337942955920484,
+            "recall": 0.9848866498740554,
+            "f1": 0.5032175032175032,
+            "support": 397
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 1381
+          },
+          "V": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            391,
+            0,
+            6,
+            0,
+            0
+          ],
+          [
+            766,
+            0,
+            615,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selected": {
+        "accuracy": 0.21991001124859394,
+        "macro_f1_all_five_classes": 0.10064350064350065,
+        "macro_f1_classes_with_true_support": 0.2516087516087516,
+        "classes_with_true_support": [
+          "N",
+          "S"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.337942955920484,
+            "recall": 0.9848866498740554,
+            "f1": 0.5032175032175032,
+            "support": 397
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 1381
+          },
+          "V": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            391,
+            0,
+            6,
+            0,
+            0
+          ],
+          [
+            766,
+            0,
+            615,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "233": {
+      "n_beats": 3077,
+      "existing": {
+        "accuracy": 0.9720506987325317,
+        "macro_f1_all_five_classes": 0.43711437308868506,
+        "macro_f1_classes_with_true_support": 0.5463929663608563,
+        "classes_with_true_support": [
+          "N",
+          "S",
+          "V",
+          "F"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9735799207397622,
+            "recall": 0.9919246298788694,
+            "f1": 0.9826666666666667,
+            "support": 2229
+          },
+          "S": {
+            "precision": 1.0,
+            "recall": 0.14285714285714285,
+            "f1": 0.25,
+            "support": 7
+          },
+          "V": {
+            "precision": 0.9677018633540373,
+            "recall": 0.9385542168674699,
+            "f1": 0.9529051987767584,
+            "support": 830
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 11
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2211,
+            0,
+            18,
+            0,
+            0
+          ],
+          [
+            2,
+            1,
+            4,
+            0,
+            0
+          ],
+          [
+            51,
+            0,
+            779,
+            0,
+            0
+          ],
+          [
+            7,
+            0,
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selected": {
+        "accuracy": 0.9720506987325317,
+        "macro_f1_all_five_classes": 0.43711437308868506,
+        "macro_f1_classes_with_true_support": 0.5463929663608563,
+        "classes_with_true_support": [
+          "N",
+          "S",
+          "V",
+          "F"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.9735799207397622,
+            "recall": 0.9919246298788694,
+            "f1": 0.9826666666666667,
+            "support": 2229
+          },
+          "S": {
+            "precision": 1.0,
+            "recall": 0.14285714285714285,
+            "f1": 0.25,
+            "support": 7
+          },
+          "V": {
+            "precision": 0.9677018633540373,
+            "recall": 0.9385542168674699,
+            "f1": 0.9529051987767584,
+            "support": 830
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 11
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2211,
+            0,
+            18,
+            0,
+            0
+          ],
+          [
+            2,
+            1,
+            4,
+            0,
+            0
+          ],
+          [
+            51,
+            0,
+            779,
+            0,
+            0
+          ],
+          [
+            7,
+            0,
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "234": {
+      "n_beats": 2751,
+      "existing": {
+        "accuracy": 0.9814612868047983,
+        "macro_f1_all_five_classes": 0.3695552931916568,
+        "macro_f1_classes_with_true_support": 0.6159254886527613,
+        "classes_with_true_support": [
+          "N",
+          "S",
+          "V"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.981798325445941,
+            "recall": 0.9996293550778355,
+            "f1": 0.990633608815427,
+            "support": 2698
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 50
+          },
+          "V": {
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571,
+            "support": 3
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2697,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            50,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "selected": {
+        "accuracy": 0.9814612868047983,
+        "macro_f1_all_five_classes": 0.3695552931916568,
+        "macro_f1_classes_with_true_support": 0.6159254886527613,
+        "classes_with_true_support": [
+          "N",
+          "S",
+          "V"
+        ],
+        "per_class": {
+          "N": {
+            "precision": 0.981798325445941,
+            "recall": 0.9996293550778355,
+            "f1": 0.990633608815427,
+            "support": 2698
+          },
+          "S": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 50
+          },
+          "V": {
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571,
+            "support": 3
+          },
+          "F": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "Q": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2697,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            50,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    }
+  }
+}
