@@ -12,15 +12,18 @@ dataset_audit.py                    Per-record eligibility/count audit using the
 app.py                              Five-class Streamlit dashboard
 tests/test_pipeline_rr.py           RR, annotation, boundary and audit parity tests
 tests/test_phase2_results.py        Phase 2 metrics/checkpoint/split consistency tests
+tests/test_phase2_rf_improved.py    DS1 candidate and final RF metric verification
 tests/test_phase4_results.py        Phase 4 metrics/checkpoint/comparison consistency tests
 tests/test_causality.py             Causal feature perturbation tests
 scripts/phase2_eda.py               DS1-only descriptive EDA; does not fit or tune models
 scripts/phase2_error_analysis.py    Post-hoc DS2 analysis from frozen predictions; no training
 docs/phase2_final_report.md          Final report with the requested 12 sections
 docs/phase2_error_analysis.md        Detailed DS2 error and record-wise analysis
+docs/phase2_rf_improvement.md        DS1-only RF investigation and final DS2 comparison
 docs/phase2_compliance_audit.md      Requirement-level audit and remaining gaps
 docs/phase2_presentation_outline.md  Presentation outline and speaker prompts
 artifacts/phase2_corrected/          Primary offline/delayed experiment and saved outputs
+artifacts/phase2_rf_improved/       Separate DS1 RF investigation and one-shot DS2 evaluation
 artifacts/phase4_causal/             Secondary causal experiment and saved outputs
 ```
 
@@ -69,6 +72,21 @@ The record-wise split is stored with each experiment. DS1 contains 23 training r
 RF candidates and CNN early stopping are selected using DS1 validation only. Class weights are derived from DS1 fit data or are fixed candidate values. DS2 is reserved for final evaluation and is not used for model selection, feature selection, class-weight selection, or thresholds. The majority and RR-only Logistic Regression baselines use the same fit/validation records. The RF consumes engineered RR values and 30 evenly spaced waveform values; the 1D-CNN consumes the complete 200-sample waveform. They share the same examples and partitions, while their input representations differ.
 
 The **Random Forest is presented as the primary selected model** because it had the higher DS1 validation macro-F1 (0.3992 vs 0.3717 for the CNN). The 1D-CNN is retained as an additional architecture comparison. The RF's bounded validation search uses 300 trees, `max_depth` in `{None, 24}`, `min_samples_leaf` in `{1, 3}`, and three class-weight choices. The CNN uses three Conv1D blocks (32/64/128 channels; kernel sizes 9/7/5), batch normalization, ReLU, max pooling after the first two blocks, adaptive average pooling, dropout 0.35, and a five-class linear output. Training uses AdamW (lr 0.001, weight decay 0.0001), weighted cross-entropy, batch size 256, up to 35 epochs, and patience 7 on DS1 validation macro-F1. The saved best epoch is 18. Full details and limitations are in [the final report](docs/phase2_final_report.md).
+
+### DS1-only Random Forest investigation
+
+The S-class investigation and controlled RF comparison are documented in [the RF improvement report](docs/phase2_rf_improvement.md). It compares the existing model with weight, depth/leaf and RR-only/waveform-only alternatives using only the existing DS1 fit and validation records. No candidate met the prespecified improvement rule, so the current RF was retained. The selected checkpoint and final DS2 comparison are saved separately under `artifacts/phase2_rf_improved/`; Phase 2, CNN and Phase 4 artifacts remain unchanged. Record 232 was not used for selection.
+
+To reproduce the experiment in a **new empty** output folder after placing MIT-BIH locally:
+
+```powershell
+$studyOut = "artifacts\phase2_rf_improved_reproduction"
+.\.venv\Scripts\python.exe artifacts\phase2_rf_improved\train_rf_improved.py --data-dir data\mitdb --out $studyOut
+.\.venv\Scripts\python.exe artifacts\phase2_rf_improved\evaluate_rf_improved_ds2.py --data-dir data\mitdb --out $studyOut
+.\.venv\Scripts\python.exe artifacts\phase2_rf_improved\verify_rf_improved_ds2.py --out $studyOut
+```
+
+The DS1 script never loads DS2 data. The evaluator runs once after the frozen DS1 configuration exists and refuses to overwrite outputs; the verification script recomputes metrics from saved predictions without model inference.
 
 ## EDA and assessment materials
 

@@ -1,0 +1,257 @@
+{
+  "phase": "Phase 2 RF DS1-only improvement study",
+  "task": "five-class AAMI offline/delayed classification",
+  "labels": [
+    "N",
+    "S",
+    "V",
+    "F",
+    "Q"
+  ],
+  "seed": 42,
+  "fit_records": [
+    "106",
+    "108",
+    "109",
+    "112",
+    "114",
+    "115",
+    "116",
+    "121",
+    "122",
+    "124",
+    "201",
+    "203",
+    "207",
+    "209",
+    "215",
+    "220",
+    "223",
+    "230"
+  ],
+  "validation_records": [
+    "101",
+    "118",
+    "119",
+    "205",
+    "208"
+  ],
+  "data_used_for_experiments": "DS1 fit and validation records only; no DS2 inputs, scores, or predictions read",
+  "prediction_design": "offline/delayed; rr_next, future intervals in rr_local, and 110 post-peak samples",
+  "window_samples": 200,
+  "pre_samples": 90,
+  "post_samples": 110,
+  "baseline_params": {
+    "n_estimators": 300,
+    "max_depth": null,
+    "min_samples_leaf": 1,
+    "class_weight": {
+      "N": 1.0,
+      "S": 5.0,
+      "V": 1.0,
+      "F": 8.0,
+      "Q": 1.0
+    },
+    "max_features": "sqrt",
+    "random_state": 42
+  },
+  "baseline_validation_metrics": {
+    "accuracy": 0.9558434916034438,
+    "macro_f1": 0.39923735065927896,
+    "per_class": {
+      "N": {
+        "precision": 0.96539035305818,
+        "recall": 0.9989708757847072,
+        "f1": 0.9818935868905523,
+        "support": 9717
+      },
+      "S": {
+        "precision": 1.0,
+        "recall": 0.038461538461538464,
+        "f1": 0.07407407407407407,
+        "support": 104
+      },
+      "V": {
+        "precision": 0.8983253588516746,
+        "recall": 0.9862114248194354,
+        "f1": 0.9402190923317684,
+        "support": 1523
+      },
+      "F": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 383
+      },
+      "Q": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 4
+      }
+    },
+    "confusion_matrix": [
+      [
+        9707,
+        0,
+        10,
+        0,
+        0
+      ],
+      [
+        14,
+        4,
+        86,
+        0,
+        0
+      ],
+      [
+        21,
+        0,
+        1502,
+        0,
+        0
+      ],
+      [
+        310,
+        0,
+        73,
+        0,
+        0
+      ],
+      [
+        3,
+        0,
+        1,
+        0,
+        0
+      ]
+    ]
+  },
+  "predeclared_selection_rule": {
+    "minimum_macro_f1_gain": 0.01,
+    "minimum_S_f1_gain": 0.02,
+    "maximum_N_or_V_f1_drop": 0.02,
+    "maximum_accuracy_drop": 0.02,
+    "ranking": "DS1 validation macro-F1, then S F1, then accuracy"
+  },
+  "selected_candidate": {
+    "name": "existing_phase2_random_forest_retained",
+    "feature_set": "full_34",
+    "params": {
+      "n_estimators": 300,
+      "max_depth": null,
+      "min_samples_leaf": 1,
+      "class_weight": {
+        "N": 1.0,
+        "S": 5.0,
+        "V": 1.0,
+        "F": 8.0,
+        "Q": 1.0
+      },
+      "max_features": "sqrt",
+      "random_state": 42
+    },
+    "metrics": {
+      "accuracy": 0.9558434916034438,
+      "macro_f1": 0.39923735065927896,
+      "per_class": {
+        "N": {
+          "precision": 0.96539035305818,
+          "recall": 0.9989708757847072,
+          "f1": 0.9818935868905523,
+          "support": 9717
+        },
+        "S": {
+          "precision": 1.0,
+          "recall": 0.038461538461538464,
+          "f1": 0.07407407407407407,
+          "support": 104
+        },
+        "V": {
+          "precision": 0.8983253588516746,
+          "recall": 0.9862114248194354,
+          "f1": 0.9402190923317684,
+          "support": 1523
+        },
+        "F": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 383
+        },
+        "Q": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 4
+        }
+      },
+      "confusion_matrix": [
+        [
+          9707,
+          0,
+          10,
+          0,
+          0
+        ],
+        [
+          14,
+          4,
+          86,
+          0,
+          0
+        ],
+        [
+          21,
+          0,
+          1502,
+          0,
+          0
+        ],
+        [
+          310,
+          0,
+          73,
+          0,
+          0
+        ],
+        [
+          3,
+          0,
+          1,
+          0,
+          0
+        ]
+      ]
+    },
+    "passes_predeclared_selection_rule": false,
+    "retained_existing": true
+  },
+  "decision": "No candidate met the predeclared improvement and non-degradation rule; retain the existing Phase 2 RF.",
+  "ds2_status": "not evaluated yet; this configuration is frozen before final test evaluation",
+  "candidate_count": 18,
+  "class_weights_tested": [
+    "existing_custom",
+    "balanced",
+    "balanced_subsample",
+    "unweighted",
+    "S10",
+    "S20"
+  ],
+  "max_depth_values_tested": [
+    null,
+    24,
+    12
+  ],
+  "min_samples_leaf_values_tested": [
+    1,
+    3,
+    5
+  ],
+  "feature_ablation_sets": [
+    "existing full_34 checkpoint",
+    "rr_only_4",
+    "waveform_only_30"
+  ]
+}
