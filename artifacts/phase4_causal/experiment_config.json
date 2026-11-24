@@ -1,0 +1,335 @@
+{
+  "seed": 42,
+  "labels": [
+    "N",
+    "S",
+    "V",
+    "F",
+    "Q"
+  ],
+  "train_records": [
+    "101",
+    "106",
+    "108",
+    "109",
+    "112",
+    "114",
+    "115",
+    "116",
+    "118",
+    "119",
+    "121",
+    "122",
+    "124",
+    "201",
+    "203",
+    "205",
+    "207",
+    "208",
+    "209",
+    "215",
+    "220",
+    "223",
+    "230"
+  ],
+  "test_records": [
+    "100",
+    "103",
+    "105",
+    "111",
+    "113",
+    "117",
+    "123",
+    "200",
+    "210",
+    "212",
+    "213",
+    "214",
+    "219",
+    "221",
+    "222",
+    "228",
+    "231",
+    "232",
+    "233",
+    "234"
+  ],
+  "fit_records": [
+    "106",
+    "108",
+    "109",
+    "112",
+    "114",
+    "115",
+    "116",
+    "121",
+    "122",
+    "124",
+    "201",
+    "203",
+    "207",
+    "209",
+    "215",
+    "220",
+    "223",
+    "230"
+  ],
+  "validation_records": [
+    "101",
+    "118",
+    "119",
+    "205",
+    "208"
+  ],
+  "split_protocol": "Exact same DS1 fit, validation, and DS2 records as Phase 2",
+  "selection_data": "DS1 validation only; DS2 used once for final reporting",
+  "prediction_time": "annotated R-peak; causal waveform contains samples [R-199, R] inclusive",
+  "window_samples": 200,
+  "samples_before_R": 199,
+  "samples_after_R": 0,
+  "rr_prev": "distance from previous valid mapped heartbeat to current R peak",
+  "rr_local": "mean of up to four preceding valid-heartbeat intervals; no future intervals",
+  "rr_next": "not computed",
+  "features_rf": [
+    "rr_prev",
+    "rr_local",
+    "rr_prev/rr_local",
+    "30 evenly spaced causal waveform samples"
+  ],
+  "feature_timing_doc": "feature_timing.md",
+  "fit_counts": {
+    "N": 37983,
+    "S": 841,
+    "V": 2266,
+    "F": 31,
+    "Q": 4
+  },
+  "validation_counts": {
+    "N": 9722,
+    "S": 104,
+    "V": 1523,
+    "F": 383,
+    "Q": 4
+  },
+  "test_counts": {
+    "N": 40319,
+    "S": 1781,
+    "V": 3199,
+    "F": 387,
+    "Q": 7
+  },
+  "all_counts": {
+    "N": 88024,
+    "S": 2726,
+    "V": 6988,
+    "F": 801,
+    "Q": 15
+  },
+  "beats_per_record": {
+    "101": 1864,
+    "106": 2026,
+    "108": 1762,
+    "109": 2531,
+    "112": 2538,
+    "114": 1878,
+    "115": 1952,
+    "116": 2411,
+    "118": 2277,
+    "119": 1986,
+    "121": 1862,
+    "122": 2475,
+    "124": 1618,
+    "201": 1962,
+    "203": 2979,
+    "205": 2655,
+    "207": 1859,
+    "208": 2954,
+    "209": 3004,
+    "215": 3362,
+    "220": 2047,
+    "223": 2604,
+    "230": 2255,
+    "100": 2272,
+    "103": 2083,
+    "105": 2571,
+    "111": 2123,
+    "113": 1794,
+    "117": 1534,
+    "123": 1517,
+    "200": 2600,
+    "210": 2649,
+    "212": 2747,
+    "213": 3250,
+    "214": 2261,
+    "219": 2153,
+    "221": 2426,
+    "222": 2482,
+    "228": 2052,
+    "231": 1570,
+    "232": 1779,
+    "233": 3078,
+    "234": 2752
+  },
+  "exclusions_by_record": {
+    "101": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "106": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "108": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "109": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "112": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "114": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "115": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "116": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "118": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "119": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "121": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "122": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "124": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "201": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "203": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "205": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "207": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "208": {
+      "F:missing_previous_heartbeat": 1
+    },
+    "209": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "215": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "220": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "223": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "230": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "100": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "103": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "105": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "111": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "113": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "117": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "123": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "200": {
+      "V:missing_previous_heartbeat": 1
+    },
+    "210": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "212": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "213": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "214": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "219": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "221": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "222": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "228": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "231": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "232": {
+      "N:missing_previous_heartbeat": 1
+    },
+    "233": {
+      "V:missing_previous_heartbeat": 1
+    },
+    "234": {
+      "N:missing_previous_heartbeat": 1
+    }
+  },
+  "rf_selected_params": {
+    "n_estimators": 300,
+    "max_depth": null,
+    "min_samples_leaf": 3,
+    "class_weight": "balanced_subsample",
+    "random_state": 42
+  },
+  "rf_candidate_validation_macro_f1": [
+    0.30206116000799366,
+    0.3025379114628787,
+    0.3000284925923814,
+    0.36713594508388303,
+    0.3828758894890865,
+    0.332083958305407,
+    0.30376568898154155,
+    0.30420294354457,
+    0.30510078989643297,
+    0.38002892560594254,
+    0.37699436863487146,
+    0.32541090613717566
+  ],
+  "cnn_best_epoch": 11,
+  "cnn_device": "cpu",
+  "cnn_fit_class_weights": [
+    0.21654424347734513,
+    9.780023781212842,
+    3.6297440423654015,
+    265.3225806451613,
+    2056.25
+  ],
+  "cnn_validation_macro_f1": 0.38135454705377614
+}

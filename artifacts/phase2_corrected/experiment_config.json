@@ -1,0 +1,311 @@
+{
+  "seed": 42,
+  "labels": [
+    "N",
+    "S",
+    "V",
+    "F",
+    "Q"
+  ],
+  "split_protocol": "DS1 GroupShuffleSplit 80/20 by record; same fit/validation rows for all models",
+  "train_records": [
+    "101",
+    "106",
+    "108",
+    "109",
+    "112",
+    "114",
+    "115",
+    "116",
+    "118",
+    "119",
+    "121",
+    "122",
+    "124",
+    "201",
+    "203",
+    "205",
+    "207",
+    "208",
+    "209",
+    "215",
+    "220",
+    "223",
+    "230"
+  ],
+  "validation_records": [
+    "101",
+    "118",
+    "119",
+    "205",
+    "208"
+  ],
+  "fit_records": [
+    "106",
+    "108",
+    "109",
+    "112",
+    "114",
+    "115",
+    "116",
+    "121",
+    "122",
+    "124",
+    "201",
+    "203",
+    "207",
+    "209",
+    "215",
+    "220",
+    "223",
+    "230"
+  ],
+  "test_records": [
+    "100",
+    "103",
+    "105",
+    "111",
+    "113",
+    "117",
+    "123",
+    "200",
+    "210",
+    "212",
+    "213",
+    "214",
+    "219",
+    "221",
+    "222",
+    "228",
+    "231",
+    "232",
+    "233",
+    "234"
+  ],
+  "excluded_same_subject_records": [
+    "202"
+  ],
+  "rr_local": "mean of up to two preceding and two following intervals between valid mapped heartbeat positions",
+  "prediction_design": "offline/delayed; rr_next, future intervals in rr_local, and 110 post-peak samples",
+  "window_samples": 200,
+  "pre_samples": 90,
+  "post_samples": 110,
+  "fit_class_counts": {
+    "N": 37966,
+    "S": 840,
+    "V": 2266,
+    "F": 31,
+    "Q": 4
+  },
+  "validation_class_counts": {
+    "N": 9717,
+    "S": 104,
+    "V": 1523,
+    "F": 383,
+    "Q": 4
+  },
+  "test_class_counts": {
+    "N": 40300,
+    "S": 1780,
+    "V": 3199,
+    "F": 387,
+    "Q": 7
+  },
+  "all_corrected_counts": {
+    "N": 87983,
+    "S": 2724,
+    "V": 6988,
+    "F": 801,
+    "Q": 15
+  },
+  "beats_per_record": {
+    "101": 1863,
+    "106": 2025,
+    "108": 1761,
+    "109": 2530,
+    "112": 2537,
+    "114": 1877,
+    "115": 1951,
+    "116": 2410,
+    "118": 2276,
+    "119": 1985,
+    "121": 1861,
+    "122": 2474,
+    "124": 1617,
+    "201": 1961,
+    "203": 2978,
+    "205": 2654,
+    "207": 1858,
+    "208": 2953,
+    "209": 3003,
+    "215": 3361,
+    "220": 2046,
+    "223": 2603,
+    "230": 2254,
+    "100": 2271,
+    "103": 2082,
+    "105": 2570,
+    "111": 2122,
+    "113": 1793,
+    "117": 1533,
+    "123": 1516,
+    "200": 2599,
+    "210": 2648,
+    "212": 2746,
+    "213": 3249,
+    "214": 2260,
+    "219": 2152,
+    "221": 2425,
+    "222": 2481,
+    "228": 2051,
+    "231": 1569,
+    "232": 1778,
+    "233": 3077,
+    "234": 2751
+  },
+  "rf_selected_params": {
+    "class_weight": {
+      "N": 1.0,
+      "S": 5.0,
+      "V": 1.0,
+      "F": 8.0,
+      "Q": 1.0
+    },
+    "max_depth": null,
+    "min_samples_leaf": 1,
+    "n_estimators": 300,
+    "random_state": 42
+  },
+  "rf_candidates": [
+    {
+      "params": {
+        "class_weight": "balanced",
+        "max_depth": null,
+        "min_samples_leaf": 1
+      },
+      "validation_macro_f1": 0.3970182524321723
+    },
+    {
+      "params": {
+        "class_weight": "balanced_subsample",
+        "max_depth": null,
+        "min_samples_leaf": 1
+      },
+      "validation_macro_f1": 0.3953098017944896
+    },
+    {
+      "params": {
+        "class_weight": {
+          "N": 1.0,
+          "S": 5.0,
+          "V": 1.0,
+          "F": 8.0,
+          "Q": 1.0
+        },
+        "max_depth": null,
+        "min_samples_leaf": 1
+      },
+      "validation_macro_f1": 0.39923735065927896
+    },
+    {
+      "params": {
+        "class_weight": "balanced",
+        "max_depth": null,
+        "min_samples_leaf": 3
+      },
+      "validation_macro_f1": 0.3973221913451913
+    },
+    {
+      "params": {
+        "class_weight": "balanced_subsample",
+        "max_depth": null,
+        "min_samples_leaf": 3
+      },
+      "validation_macro_f1": 0.39665389125286243
+    },
+    {
+      "params": {
+        "class_weight": {
+          "N": 1.0,
+          "S": 5.0,
+          "V": 1.0,
+          "F": 8.0,
+          "Q": 1.0
+        },
+        "max_depth": null,
+        "min_samples_leaf": 3
+      },
+      "validation_macro_f1": 0.39827713912498347
+    },
+    {
+      "params": {
+        "class_weight": "balanced",
+        "max_depth": 24,
+        "min_samples_leaf": 1
+      },
+      "validation_macro_f1": 0.3964374771369493
+    },
+    {
+      "params": {
+        "class_weight": "balanced_subsample",
+        "max_depth": 24,
+        "min_samples_leaf": 1
+      },
+      "validation_macro_f1": 0.3964834907498191
+    },
+    {
+      "params": {
+        "class_weight": {
+          "N": 1.0,
+          "S": 5.0,
+          "V": 1.0,
+          "F": 8.0,
+          "Q": 1.0
+        },
+        "max_depth": 24,
+        "min_samples_leaf": 1
+      },
+      "validation_macro_f1": 0.39921582851175746
+    },
+    {
+      "params": {
+        "class_weight": "balanced",
+        "max_depth": 24,
+        "min_samples_leaf": 3
+      },
+      "validation_macro_f1": 0.39656685875801134
+    },
+    {
+      "params": {
+        "class_weight": "balanced_subsample",
+        "max_depth": 24,
+        "min_samples_leaf": 3
+      },
+      "validation_macro_f1": 0.39688178000106344
+    },
+    {
+      "params": {
+        "class_weight": {
+          "N": 1.0,
+          "S": 5.0,
+          "V": 1.0,
+          "F": 8.0,
+          "Q": 1.0
+        },
+        "max_depth": 24,
+        "min_samples_leaf": 3
+      },
+      "validation_macro_f1": 0.39827169441471844
+    }
+  ],
+  "cnn_best_epoch": 18,
+  "cnn_device": "cpu",
+  "cnn_fit_class_weights": [
+    0.21654638360638467,
+    9.787380952380952,
+    3.6281553398058253,
+    265.2064516129032,
+    2055.35
+  ],
+  "selection_data": "DS1 validation only; DS2 used once for final reporting"
+}

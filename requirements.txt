@@ -2,8 +2,7 @@ wfdb
 numpy
 scikit-learn
 matplotlib
-fastapi
-uvicorn
+pandas
 joblib
 streamlit
-requests
+torch

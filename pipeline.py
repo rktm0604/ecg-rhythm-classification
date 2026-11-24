@@ -1,3 +1,4 @@
+
 """Approved five-class MIT-BIH data pipeline.
 
 Labels follow the Phase 1 mapping: N, S, V, F, Q.
@@ -7,6 +8,7 @@ Recordings and annotations are read from the local data/mitdb directory.
 
 from __future__ import annotations
 
+from collections import Counter
 from pathlib import Path
 
 import numpy as np
@@ -163,6 +165,75 @@ def _engineered_features(window, rr_prev, rr_next, rr_local):
     )
 
 
+def extract_record_beats(signal, positions, symbols):
+    """Build beat rows and exclusion counts for one annotated record.
+
+    RR intervals use consecutive mapped heartbeat annotations only. For a
+    heartbeat at position j in that filtered sequence, rr_local is the mean
+    of up to two preceding and two following heartbeat intervals. Thus it
+    includes future intervals and is intended for offline/delayed prediction.
+    """
+    signal = np.asarray(signal, dtype=np.float32)
+    positions = np.asarray(positions, dtype=int)
+    symbols = np.asarray(symbols)
+    if len(positions) != len(symbols):
+        raise ValueError("Annotation positions and symbols must have equal length")
+
+    heartbeat_indices = [
+        i for i, symbol in enumerate(symbols)
+        if str(symbol) in LABEL_MAP
+    ]
+    heartbeat_positions = positions[heartbeat_indices]
+    rr_intervals = np.diff(heartbeat_positions).astype(float)
+    rows = []
+    excluded = Counter()
+
+    for beat_index, annotation_index in enumerate(heartbeat_indices):
+        label = LABEL_MAP[str(symbols[annotation_index])]
+        if beat_index == 0:
+            excluded[(label, "missing_previous_heartbeat")] += 1
+            continue
+        if beat_index == len(heartbeat_indices) - 1:
+            excluded[(label, "missing_next_heartbeat")] += 1
+            continue
+
+        peak = int(heartbeat_positions[beat_index])
+        start, end = peak - PRE, peak + POST
+        if start < 0 or end > len(signal):
+            excluded[(label, "waveform_boundary")] += 1
+            continue
+        raw = signal[start:end]
+        if len(raw) != WINDOW:
+            excluded[(label, "invalid_window_length")] += 1
+            continue
+        if not np.isfinite(raw).all():
+            excluded[(label, "non_finite_waveform")] += 1
+            continue
+
+        rr_prev = float(rr_intervals[beat_index - 1])
+        rr_next = float(rr_intervals[beat_index])
+        interval_start = max(0, beat_index - 2)
+        interval_end = min(len(rr_intervals), beat_index + 2)
+        local_intervals = rr_intervals[interval_start:interval_end]
+        local = float(np.mean(local_intervals)) if len(local_intervals) else float("nan")
+        if not np.isfinite([rr_prev, rr_next, local]).all() or local <= 0:
+            excluded[(label, "invalid_rr_interval")] += 1
+            continue
+
+        wave = _safe_zscore(raw)
+        rows.append({
+            "label": label,
+            "wave": wave,
+            "features": _engineered_features(wave, rr_prev, rr_next, local),
+            "annotation_index": int(annotation_index),
+            "sample": peak,
+            "rr_prev": rr_prev,
+            "rr_next": rr_next,
+            "rr_local": local,
+        })
+    return rows, excluded, len(heartbeat_indices), len(symbols) - len(heartbeat_indices)
+
+
 def build_dataset(records):
     """Read local MIT-BIH records and return beat windows and labels.
 
@@ -184,48 +255,14 @@ def build_dataset(records):
             continue
 
         signal, positions, symbols = _read_record(record)
+        rows, _, _, _ = extract_record_beats(signal, positions, symbols)
         kept = 0
-
-        for index, symbol in enumerate(symbols):
-            label = LABEL_MAP.get(str(symbol))
-
-            if label is None or index == 0 or index == len(positions) - 1:
-                continue
-
-            peak = int(positions[index])
-            start = peak - PRE
-            end = peak + POST
-
-            if start < 0 or end > len(signal):
-                continue
-
-            raw = signal[start:end]
-
-            if len(raw) != WINDOW or not np.isfinite(raw).all():
-                continue
-
-            wave = _safe_zscore(raw)
-
-            rr_prev = float(positions[index] - positions[index - 1])
-            rr_next = float(positions[index + 1] - positions[index])
-
-            nearby_positions = positions[
-                max(0, index - 2):min(len(positions), index + 3)
-            ]
-
-            local = float(np.mean(np.diff(nearby_positions)))
-
-            if (
-                not np.isfinite([rr_prev, rr_next, local]).all()
-                or local <= 0
-            ):
-                continue
-
+        for row in rows:
             X_rf.append(
-                _engineered_features(wave, rr_prev, rr_next, local)
+                row["features"]
             )
-            X_wave.append(wave)
-            y.append(label)
+            X_wave.append(row["wave"])
+            y.append(row["label"])
             rec_ids.append(record)
             beat_nums.append(kept)
             kept += 1
