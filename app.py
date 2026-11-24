@@ -13,6 +13,7 @@ import pandas as pd
 import streamlit as st
 
 ART = Path(__file__).resolve().parent / "artifacts" / "phase2_corrected"
+CAUSAL_ART = Path(__file__).resolve().parent / "artifacts" / "phase4_causal"
 LABEL_NAMES = {"N": "Normal", "S": "Supraventricular ectopic", "V": "Ventricular ectopic", "F": "Fusion", "Q": "Unknown / paced / unclassifiable"}
 COLORS = {"N": "#43D9C5", "S": "#8AB4F8", "V": "#F0A36B", "F": "#B69CFA", "Q": "#E879A5"}
 MODEL_PREDICTION_KEYS = {
@@ -30,6 +31,13 @@ def load_phase2():
     with np.load(ART / "predictions.npz", allow_pickle=False) as archive:
         predictions = {key: archive[key] for key in archive.files}
     return results, config, predictions
+
+
+@st.cache_data
+def load_phase4_comparison():
+    results = json.loads((CAUSAL_ART / "results.json").read_text(encoding="utf-8"))
+    comparison = json.loads((CAUSAL_ART / "comparison.json").read_text(encoding="utf-8"))
+    return results, comparison
 
 
 try:
@@ -50,7 +58,7 @@ st.info("Research prototype only. Reference annotations locate beats. This offli
 
 with st.sidebar:
     st.header("Phase 2 corrected")
-    page = st.radio("View", ["Overview", "Model comparison", "Test predictions", "Method & limitations"])
+    page = st.radio("View", ["Overview", "Model comparison", "Offline vs causal", "Test predictions", "Method & limitations"])
     st.caption(f"DS1 fit: {len(C['fit_records'])} records")
     st.caption(f"DS1 validation: {len(C['validation_records'])} records")
     st.caption(f"DS2 test: {len(C['test_records'])} records · {len(y):,} beats")
@@ -76,11 +84,11 @@ elif page == "Model comparison":
     for split, split_models in (("DS1 validation", R["validation"]), ("DS2 final test", models)):
         for name, metrics in split_models.items():
             rows.append({"Split": split, "Model": name, "Macro-F1": metrics["macro_f1"], "Accuracy": metrics["accuracy"]})
-    st.dataframe(pd.DataFrame(rows).round(4), hide_index=True, use_container_width=True)
+    st.dataframe(pd.DataFrame(rows).round(4), hide_index=True, width="stretch")
     selected = st.selectbox("Model details", list(models))
     report = models[selected]["report"]
     table = [{"Class": f"{c} — {LABEL_NAMES[c]}", "Precision": report[c]["precision"], "Recall": report[c]["recall"], "F1": report[c]["f1-score"], "Support": int(report[c]["support"])} for c in labels]
-    st.dataframe(pd.DataFrame(table).round(4), hide_index=True, use_container_width=True)
+    st.dataframe(pd.DataFrame(table).round(4), hide_index=True, width="stretch")
     cm = np.asarray(models[selected]["confusion"])
     fig, ax = plt.subplots(figsize=(6, 5))
     ax.imshow(cm, cmap="PuBuGn")
@@ -90,7 +98,7 @@ elif page == "Model comparison":
     for (i, j), value in np.ndenumerate(cm):
         ax.text(j, i, f"{value:,}", ha="center", va="center", color="white" if value > cm.max() * .5 else "#142238")
     fig.tight_layout()
-    st.pyplot(fig, use_container_width=True)
+    st.pyplot(fig, width="stretch")
 
 elif page == "Test predictions":
     st.subheader("Saved DS2 predictions")
@@ -103,7 +111,67 @@ elif page == "Test predictions":
     if record_filter != "All": mask &= records == record_filter
     rows = pd.DataFrame({"Record": records[mask], "Beat index": P["beat_number_test"][mask], "True class": y[mask], "Predicted class": prediction[mask], "Correct": y[mask] == prediction[mask]})
     st.caption(f"Showing {len(rows):,} beats · predictions are loaded from predictions.npz")
-    st.dataframe(rows.head(1000), hide_index=True, use_container_width=True)
+    st.dataframe(rows.head(1000), hide_index=True, width="stretch")
+
+elif page == "Offline vs causal":
+    st.subheader("Phase 2 offline/delayed vs Phase 4 causal")
+    st.markdown(
+        "These experiments use the same records but have different prediction cut-offs. "
+        "Phase 2 includes 110 samples after R and future RR context. Phase 4 predicts at R "
+        "using samples through R and past RR context only. The table reports stored DS2 results; "
+        "DS2 was not used for model selection."
+    )
+    try:
+        causal_results, comparison = load_phase4_comparison()
+    except Exception as exc:
+        st.error(f"Could not load Phase 4 comparison artifacts from {CAUSAL_ART}: {exc}")
+        st.stop()
+    st.caption("Phase 4 standalone metrics")
+    causal_rows = []
+    for split, split_models in (
+        ("DS1 validation", causal_results["validation"]),
+        ("DS2 final test", causal_results["final_test"]),
+    ):
+        for name, metrics in split_models.items():
+            causal_rows.append({
+                "Split": split,
+                "Model": name,
+                "Macro-F1": metrics["macro_f1"],
+                "Accuracy": metrics["accuracy"],
+            })
+    st.dataframe(pd.DataFrame(causal_rows).round(4), hide_index=True, width="stretch")
+    summary = []
+    for name, values in comparison.items():
+        summary.append({
+            "Model": name,
+            "Phase 2 macro-F1": values["phase2_offline_macro_f1"],
+            "Phase 4 macro-F1": values["phase4_causal_macro_f1"],
+            "Δ macro-F1": values["macro_f1_difference_causal_minus_offline"],
+            "Phase 2 accuracy": values["phase2_offline_accuracy"],
+            "Phase 4 accuracy": values["phase4_causal_accuracy"],
+            "Δ accuracy": values["accuracy_difference_causal_minus_offline"],
+        })
+    st.dataframe(pd.DataFrame(summary).round(4), hide_index=True, width="stretch")
+    model_name = st.selectbox("Per-class comparison", ["Random Forest", "1D-CNN"])
+    per_class = comparison[model_name]["per_class"]
+    class_rows = []
+    for label in labels:
+        row = per_class[label]
+        class_rows.append({
+            "Class": f"{label} — {LABEL_NAMES[label]}",
+            "Support P2/P4": f"{row['support_phase2']:,} / {row['support_phase4']:,}",
+            "F1 P2": row["phase2_f1"],
+            "F1 P4": row["phase4_f1"],
+            "Δ F1": row["f1_difference"],
+            "Recall P2": row["phase2_recall"],
+            "Recall P4": row["phase4_recall"],
+            "Δ recall": row["recall_difference"],
+        })
+    st.dataframe(pd.DataFrame(class_rows).round(4), hide_index=True, width="stretch")
+    st.caption(
+        "The causal DS2 set has 40319 N, 1781 S, 3199 V, 387 F and 7 Q beats. "
+        "Only 31 F and 4 Q examples were available in causal DS1 fitting; estimates for F and Q are unstable."
+    )
 
 else:
     st.subheader("Method, split, and limitations")

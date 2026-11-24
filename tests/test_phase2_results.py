@@ -30,6 +30,9 @@ class Phase2ArtifactTests(unittest.TestCase):
             cls.pred = {key: z[key] for key in z.files}
         cls.labels = cls.config["labels"]
 
+    def test_results_embed_the_same_experiment_configuration(self):
+        self.assertEqual(self.results["config"], self.config)
+
     def assert_metrics_match(self, stored, computed):
         self.assertAlmostEqual(stored["accuracy"], computed["accuracy"], places=12)
         self.assertAlmostEqual(stored["macro_f1"], computed["macro_f1"], places=12)

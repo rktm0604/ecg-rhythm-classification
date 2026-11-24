@@ -46,6 +46,15 @@ class PipelineRRTests(unittest.TestCase):
                 self.assertFalse(any(row["sample"] == peak for row in rows))
                 self.assertEqual(excluded[("V", "waveform_boundary")], 1)
 
+    def test_nonpositive_rr_intervals_are_excluded(self):
+        signal = np.zeros(1200, dtype=np.float32)
+        rows, excluded, _, _ = pipeline.extract_record_beats(
+            signal, [100, 300, 250, 500], ["N", "V", "S", "N"]
+        )
+        self.assertFalse(any(row["sample"] in (300, 250) for row in rows))
+        self.assertEqual(excluded[("V", "invalid_rr_interval")], 1)
+        self.assertEqual(excluded[("S", "invalid_rr_interval")], 1)
+
     def test_valid_window_is_exactly_200_samples(self):
         signal = np.arange(1000, dtype=np.float32)
         rows, _, _, _ = pipeline.extract_record_beats(

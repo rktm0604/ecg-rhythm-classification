@@ -216,7 +216,12 @@ def extract_record_beats(signal, positions, symbols):
         interval_end = min(len(rr_intervals), beat_index + 2)
         local_intervals = rr_intervals[interval_start:interval_end]
         local = float(np.mean(local_intervals)) if len(local_intervals) else float("nan")
-        if not np.isfinite([rr_prev, rr_next, local]).all() or local <= 0:
+        if (
+            not np.isfinite([rr_prev, rr_next, local]).all()
+            or rr_prev <= 0
+            or rr_next <= 0
+            or local <= 0
+        ):
             excluded[(label, "invalid_rr_interval")] += 1
             continue
 

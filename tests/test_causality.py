@@ -4,9 +4,9 @@ import sys
 
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from pipeline import LABEL_MAP
-from train_eval_phase4 import causal_record_features
+from artifacts.phase4_causal.train_eval_phase4 import causal_record_features
 
 
 class CausalFeatureTests(unittest.TestCase):
