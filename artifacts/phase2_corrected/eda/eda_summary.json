@@ -1,0 +1,199 @@
+{
+  "dataset": "MIT-BIH Arrhythmia Database",
+  "source_data_dir": "D:\\Downloads\\ecg project\\data\\mitdb",
+  "records_used": [
+    "101",
+    "106",
+    "108",
+    "109",
+    "112",
+    "114",
+    "115",
+    "116",
+    "118",
+    "119",
+    "121",
+    "122",
+    "124",
+    "201",
+    "203",
+    "205",
+    "207",
+    "208",
+    "209",
+    "215",
+    "220",
+    "223",
+    "230"
+  ],
+  "split_used_for_eda": "DS1 only; no DS2 data loaded",
+  "eligible_counts_by_class": {
+    "N": 47683,
+    "S": 944,
+    "V": 3789,
+    "F": 414,
+    "Q": 8
+  },
+  "eligible_proportions_by_class": {
+    "N": 0.9024376395775767,
+    "S": 0.01786592982323328,
+    "V": 0.07170975434346492,
+    "F": 0.007835270070782392,
+    "Q": 0.00015140618494265492
+  },
+  "total_eligible_beats": 52838,
+  "representative_waveform_records": {
+    "N": "101",
+    "S": "101",
+    "V": "106",
+    "F": "108",
+    "Q": "101"
+  },
+  "rr_summary_seconds": {
+    "N": {
+      "rr_prev": {
+        "median_seconds": 0.7611111111111111,
+        "q1_seconds": 0.6861111111111111,
+        "q3_seconds": 0.9333333333333333
+      },
+      "rr_next": {
+        "median_seconds": 0.7416666666666667,
+        "q1_seconds": 0.6611111111111111,
+        "q3_seconds": 0.9111111111111111
+      },
+      "rr_local": {
+        "median_seconds": 0.7458333333333333,
+        "q1_seconds": 0.6763888888888889,
+        "q3_seconds": 0.91875
+      }
+    },
+    "S": {
+      "rr_prev": {
+        "median_seconds": 0.49444444444444446,
+        "q1_seconds": 0.3972222222222222,
+        "q3_seconds": 0.5534722222222223
+      },
+      "rr_next": {
+        "median_seconds": 0.6472222222222223,
+        "q1_seconds": 0.3972222222222222,
+        "q3_seconds": 0.8805555555555555
+      },
+      "rr_local": {
+        "median_seconds": 0.6138888888888889,
+        "q1_seconds": 0.4579861111111111,
+        "q3_seconds": 0.7697916666666667
+      }
+    },
+    "V": {
+      "rr_prev": {
+        "median_seconds": 0.5194444444444445,
+        "q1_seconds": 0.4638888888888889,
+        "q3_seconds": 0.5611111111111111
+      },
+      "rr_next": {
+        "median_seconds": 0.8611111111111112,
+        "q1_seconds": 0.6527777777777778,
+        "q3_seconds": 1.2027777777777777
+      },
+      "rr_local": {
+        "median_seconds": 0.7006944444444444,
+        "q1_seconds": 0.6006944444444444,
+        "q3_seconds": 0.8888888888888888
+      }
+    },
+    "F": {
+      "rr_prev": {
+        "median_seconds": 0.5861111111111111,
+        "q1_seconds": 0.5611111111111111,
+        "q3_seconds": 0.6083333333333333
+      },
+      "rr_next": {
+        "median_seconds": 0.4638888888888889,
+        "q1_seconds": 0.4444444444444444,
+        "q3_seconds": 0.5583333333333333
+      },
+      "rr_local": {
+        "median_seconds": 0.6409722222222223,
+        "q1_seconds": 0.60625,
+        "q3_seconds": 0.6694444444444444
+      }
+    },
+    "Q": {
+      "rr_prev": {
+        "median_seconds": 0.7777777777777778,
+        "q1_seconds": 0.6979166666666667,
+        "q3_seconds": 0.9993055555555556
+      },
+      "rr_next": {
+        "median_seconds": 0.8347222222222221,
+        "q1_seconds": 0.7090277777777778,
+        "q3_seconds": 0.9624999999999999
+      },
+      "rr_local": {
+        "median_seconds": 0.8128472222222223,
+        "q1_seconds": 0.7607638888888889,
+        "q3_seconds": 1.0407986111111112
+      }
+    }
+  },
+  "top_saved_rf_features": [
+    {
+      "feature": "rr_prev / rr_local",
+      "importance": 0.14803819379170224
+    },
+    {
+      "feature": "rr_prev",
+      "importance": 0.14731947723564448
+    },
+    {
+      "feature": "rr_next",
+      "importance": 0.06837398540711746
+    },
+    {
+      "feature": "rr_next / rr_local",
+      "importance": 0.05633364668627763
+    },
+    {
+      "feature": "wave[-1]",
+      "importance": 0.04653547515786466
+    },
+    {
+      "feature": "wave[68]",
+      "importance": 0.03189494866468163
+    },
+    {
+      "feature": "wave[6]",
+      "importance": 0.030260879454581075
+    },
+    {
+      "feature": "wave[20]",
+      "importance": 0.027687678217867644
+    },
+    {
+      "feature": "wave[-15]",
+      "importance": 0.02610033560135151
+    },
+    {
+      "feature": "wave[-90]",
+      "importance": 0.025728135466122213
+    },
+    {
+      "feature": "wave[13]",
+      "importance": 0.023240833935698795
+    },
+    {
+      "feature": "wave[-21]",
+      "importance": 0.0227485995320304
+    }
+  ],
+  "rr_units_in_plots": "seconds (sample intervals divided by 360 Hz)",
+  "rf_importance_source": "D:\\Downloads\\ecg project\\cleanup-checkout\\artifacts\\phase2_corrected\\random_forest.joblib",
+  "figures": [
+    "class_distribution_ds1.png",
+    "representative_waveforms_ds1.png",
+    "rr_distributions_ds1.png",
+    "rr_relationship_ds1.png",
+    "rf_feature_importance.png"
+  ],
+  "interpretation_note": "These figures describe DS1 and the already selected saved RF. They were not used to select or tune models."
+}
