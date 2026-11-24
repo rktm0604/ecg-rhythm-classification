@@ -2,7 +2,7 @@
 
 ## Assessment basis and scope
 
-This audit checks the detailed criteria in the user's attached Phase 2 audit request against source code, saved Phase 2 artifacts, tests, the local MIT-BIH dataset, and documentation. The separate “official Phase 2 requirements, Sections 21–27” document was not present in the supplied attachment or project files. Compliance with any wording or criteria that exist only in that missing document is therefore **CANNOT VERIFY**. Do not treat this audit as a line-by-line certification against unseen official requirements.
+This audit checks the user's supplied Phase 2 rubric screenshots (visible Sections 21–26, including the 24.1 assessment table) against source code, saved Phase 2 artifacts, tests, and documentation. The screenshots do not include Section 27 or the Phase 1 approval/success-criterion wording referenced by the Phase 2 rubric. Conclusions below cover only the visible ML criteria. Per the user's latest instruction, presentation quality, UI, and live demonstration are out of scope for this pass; those rubric items are explicitly deferred rather than assessed.
 
 The corrected checkout is `D:\Downloads\ecg project\cleanup-checkout`. Historical Phase 1 baseline evidence was read only from the original local project's `D:\Downloads\ecg project\artifacts\results.json`, `test_data.npz`, `rr_logistic_baseline.joblib`, and `train_eval.py`. Those historical artifacts are not tracked in the cleaned checkout.
 
@@ -43,7 +43,7 @@ Status labels: **IMPLEMENTED AND VERIFIED**, **PARTIALLY IMPLEMENTED**, **NOT IM
 | Requirement | Status | Evidence and finding |
 |---|---|---|
 | Identify a primary model | IMPLEMENTED AND VERIFIED | `docs/phase2_final_report.md` §1 and README now identify RF as primary based on higher DS1 validation macro-F1; CNN is secondary comparison. |
-| Match a single-model brief | PARTIALLY IMPLEMENTED | The source still implements both RF and CNN. The report frames RF as the one primary selected model and CNN as an additional comparison; if the brief literally allows only one implemented model, the extra CNN is outside that wording. It is preserved as requested. |
+| Match the rubric's single-model requirement (22.3) | PARTIALLY IMPLEMENTED | The supplied rubric explicitly asks for a single ML model. RF is the selected primary model, but the approved project also retains CNN as a comparison. The CNN remains by the user's explicit instruction; this is a known rubric mismatch, not a hidden assumption. |
 | Verify RF implementation | IMPLEMENTED AND VERIFIED | `artifacts/phase2_corrected/train_eval_phase2.py::main` fits `RandomForestClassifier`; saved checkpoint and parameters are checked by `tests/test_phase2_results.py`. |
 | Inputs and output classes | IMPLEMENTED AND VERIFIED | RF input width 34 and CNN waveform width 200 are tested; class order is N,S,V,F,Q. Details in report §5. |
 | Architecture/algorithm configuration | IMPLEMENTED AND VERIFIED | RF checkpoint plus experiment config; CNN `ECGNet` implementation and saved checkpoint checked by tests. |
@@ -84,7 +84,7 @@ Status labels: **IMPLEMENTED AND VERIFIED**, **PARTIALLY IMPLEMENTED**, **NOT IM
 | Requirement | Status | Evidence and finding |
 |---|---|---|
 | State whether task addressed | IMPLEMENTED AND VERIFIED | Report §11 states that the known-annotated-beat, offline/delayed five-class task was addressed and explicitly excludes beat detection/clinical claims. |
-| Verify official Phase 1 success criterion | CANNOT VERIFY | The local Phase 1 result records a 0.05 macro-F1 margin and “success=true”; the official Sections 21–27 document was not attached, so its exact criterion cannot be certified. |
+| Verify Phase 1 success criterion referenced in the Phase 2 rubric | PARTIALLY IMPLEMENTED | The original local Phase 1 result records a 0.05 macro-F1 margin and `success=true`; Phase 2 RF exceeds both historical saved Phase 1 baseline macro-F1 values by more than 0.05. The Phase 1 approval wording defining the criterion was not supplied, and historical Phase 1 vs corrected Phase 2 eligible DS2 counts differ by 14, so exact criterion compliance and exact beat-paired comparison cannot be certified from the available evidence. |
 | Compare final result with actual Phase 1 baselines | PARTIALLY IMPLEMENTED | Report §8 compares against the actual locally saved Phase 1 baselines and separately gives corrected matched Phase 2 baselines; historical beat count differs and reference artifacts are not in checkout. |
 | Discuss limitations | IMPLEMENTED AND VERIFIED | Report §10 covers class support, information cut-off, preprocessing, model fairness, historical comparison, and dataset access. |
 | Suggest future improvements | IMPLEMENTED AND VERIFIED | Report §11 recommends additional F/Q data, DS1-only ablations, stratified error analysis, and preserving historical baselines. |
@@ -96,17 +96,16 @@ Status labels: **IMPLEMENTED AND VERIFIED**, **PARTIALLY IMPLEMENTED**, **NOT IM
 | Final report with all 12 sections | IMPLEMENTED AND VERIFIED | `docs/phase2_final_report.md` has the requested 12 numbered sections. |
 | Organized executable source and tests | IMPLEMENTED AND VERIFIED | Root pipeline, training scripts, `scripts/phase2_eda.py`, tests, and artifact directories are organized. Test suite and compilation checks are run below. |
 | Dataset source/access instructions | IMPLEMENTED AND VERIFIED | README and report §2/§12 give PhysioNet source and local file placement; raw data is not committed. |
-| Final presentation material | PARTIALLY IMPLEMENTED | `docs/phase2_presentation_outline.md` supplies a slide-by-slide narrative and speaker prompts. A rendered PowerPoint/Slides deck is not included. |
-| Working demonstration of actual five-class system | IMPLEMENTED AND VERIFIED | `app.py` loads Phase 2 five-class predictions/results, shows the Phase 4 comparison separately, and was smoke-tested using Streamlit AppTest. |
+| Presentation, UI, live demo and presentation-quality rubric items | DEFERRED BY USER | The user asked to leave presentation, UI and live-demo work for now. These items are outside this ML-only audit update and are not counted as ML evidence. |
 
 ## B. Missing or partially implemented items
 
-1. The official assessment document (Sections 21–27) was not supplied, preventing an exact official-standard audit and success-criterion certification.
+1. The supplied screenshots cover Sections 21–26 but omit Section 27 and the Phase 1 approval/success-criterion wording. Those unseen requirements cannot be certified.
 2. Historical Phase 1 baseline output is stored only in the original local project, not in the cleaned checkout. The 14-beat DS2 support difference also prevents exact per-beat historical pairing.
 3. The repository includes two algorithms even though the brief reportedly asks for one; RF is designated primary and CNN an additional comparison, but a literal single-implementation rule remains a scope mismatch.
 4. No ablation isolates effects of per-beat normalization, signal filtering, window size, RR features, or fixed CNN settings.
 5. The error analysis now includes record metrics and representative saved ECG windows, but it is not a blinded clinical review or a signal-quality/subject-stratified causal analysis.
-6. The presentation deliverable is an outline, not a rendered slide deck.
+6. Presentation quality, UI, and live-demo deliverables are deferred at the user's direction and were not assessed in this ML-only pass.
 
 ## C. Changes made
 
@@ -121,7 +120,7 @@ Status labels: **IMPLEMENTED AND VERIFIED**, **PARTIALLY IMPLEMENTED**, **NOT IM
 
 Verification performed with the existing environment at `D:\Downloads\ecg project\.venv\Scripts\python.exe`:
 
-- `python -m unittest discover -s tests -v`: the earlier audit recorded **25 tests passed**. The final verification below reruns the current complete suite.
+- `python -m unittest discover -s tests -v`: **29 tests passed** in the current final ML verification.
 - `python -m compileall -q pipeline.py dataset_audit.py app.py artifacts\phase2_corrected\train_eval_phase2.py artifacts\phase4_causal\train_eval_phase4.py scripts tests`: **passed**.
 - Streamlit `AppTest.from_file('app.py').run()`: **0 exceptions**; Streamlit emitted only its expected bare-mode `ScriptRunContext` warning.
 - `git diff --check`: **passed**.
@@ -133,7 +132,7 @@ No model training or package installation occurred. Phase 2/4 model checkpoints,
 
 ## E. Remaining submission checks
 
-- Obtain the actual official Sections 21–27 file and compare its exact wording with this audit.
+- Obtain the complete official Section 27 and the Phase 1 approval/success-criterion wording if exact certification is required.
 - Decide whether the grader accepts a primary RF plus a comparative CNN, or requires only one implemented model.
 - Include or otherwise make accessible the historical Phase 1 baseline reference outputs if the instructor expects fresh-clone reproduction.
 - Turn the outline into a rendered deck if a slide deck is a required artifact.
@@ -162,10 +161,32 @@ Using the existing interpreter at `D:\Downloads\ecg project\.venv\Scripts\python
 - Compilation found no syntax errors. Python source scans found no hard-coded machine-specific absolute paths; scripts construct paths relative to their source or accept data/output arguments. `artifacts/phase2_corrected/eda/eda_summary.json` does retain the original machine's absolute source-data/checkpoint provenance strings; they are descriptive metadata and are not used by the pipeline.
 - Required Python dependencies are pinned in `requirements.txt`; the existing environment reports Python 3.11.9 and installed versions matching the listed pins. No package was installed or upgraded.
 
+### Remaining ML rubric findings from the supplied screenshots
+
+| Visible rubric item | Status | Evidence and limitation |
+|---|---|---|
+| 21.1 — demonstrate the complete ML problem-solving pipeline | IMPLEMENTED AND VERIFIED | `pipeline.py`, Phase 2/4 training scripts, saved predictions/results, tests, and the 12-section report cover problem/data/preparation/model/training/evaluation/analysis/conclusion for the corrected experiments. Historical Phase 1 artifacts are not in this checkout. |
+| 22.1 — dataset understanding, missing/inconsistent data, preprocessing, imbalance and information cut-off | PARTIALLY IMPLEMENTED | Mapping, validity/exclusion reasons, record split/leakage tests, counts, and both timing designs are documented and tested. There is no general signal repair/imputation; the exact Clause 4.4 wording is not in the screenshots, so exact clause-level cutoff compliance cannot be checked. |
+| 22.2 — EDA, patterns and visuals | IMPLEMENTED AND VERIFIED | `scripts/phase2_eda.py` and saved DS1-only EDA figures are cited and interpreted in report §4. The figures are descriptive and do not establish class separability. |
+| 22.3 — implement a single suitable ML model, train, tune and select | PARTIALLY IMPLEMENTED | RF is the selected primary model; its bounded settings are selected using DS1 validation. CNN is retained as a comparison because the user explicitly approved it. The literal one-model clause is therefore not met; the RF remains the sole primary selection. No DS2 selection was performed. |
+| 22.4 — approved evaluation, primary/secondary metrics, both Phase 1 baselines, margins and fair comparison | PARTIALLY IMPLEMENTED | Macro-F1, accuracy, per-class reports, matrices, and matched majority/RR-only baselines are verified from the corrected saved predictions. Historical Phase 1 baseline figures and margins are reported, but historical extraction retains 14 more DS2 beats; Phase 1 reference files are outside this checkout. |
+| 22.5 — explain performance, patterns, feature/preprocessing effects and limitations | PARTIALLY IMPLEMENTED | Report §9 and the DS2 error analysis interpret actual metrics, errors, class supports, and feature importance. A preprocessing ablation and signal-quality/blinded waveform review were not performed, so those effects/causes are not established. |
+| 22.6 — address problem, Phase 1 criterion, limitations and future work | PARTIALLY IMPLEMENTED | The report states the task, metrics, limitations and future work. It reports the stored 0.05 margin and historical baseline results, but the unseen Phase 1 approval wording prevents an exact success-criterion certification. |
+| 23.2 — organized executable source for loading through evaluation | IMPLEMENTED AND VERIFIED for corrected Phase 2/4 | Shared extraction, training/evaluation scripts, saved configurations/results, and 29 automated tests are present. Historical Phase 1 baseline training source/artifacts are not part of this cleaned checkout. |
+| 23.3 — dataset source, access and preparation | IMPLEMENTED AND VERIFIED | README and final report identify PhysioNet, expected `.hea/.dat/.atr` files under `data/mitdb/`, and required preparation. Raw MIT-BIH data is not committed. |
+| 24.1 — Data Preparation and Preprocessing (3 marks) | PARTIALLY IMPLEMENTED | Annotation filtering, record-wise split, leakage checks and cutoff designs are implemented; see 22.1. General repair and exact unseen Clause 4.4 check remain unavailable. |
+| 24.1 — Model Implementation and Experimental Setup (3 marks) | PARTIALLY IMPLEMENTED | Training/checkpoints/configs are verified, but the implementation includes a CNN comparison despite the literal single-model wording. This is retained per user approval. |
+| 24.1 — Model Evaluation (3 marks) | PARTIALLY IMPLEMENTED | Current corrected metrics/baselines are reproducible; historical Phase 1 figures are not exactly beat-matched and are not reproducible from a fresh clone. |
+| 24.1 — Critical Insights and Interpretation (3 marks) | PARTIALLY IMPLEMENTED | Actual imbalance/error patterns are analyzed; causal reasons and preprocessing effects are not established. |
+| 24.1 — Technical Implementation and Reproducibility (1 mark) | PARTIALLY IMPLEMENTED | Corrected experiments pass the current suite and metrics reproduce from saved outputs. Fresh full regeneration requires separately acquired raw data; original Phase 1 historical artifacts are unavailable in this checkout. |
+| 24.1 — Report Quality (1 mark) | IMPLEMENTED AND VERIFIED as ML documentation | `docs/phase2_final_report.md` contains the requested 12 numbered sections, actual metrics, analysis and limitations. Formal grading remains the instructor's decision. |
+| 25.1 — evidence-supported critical interpretation | PARTIALLY IMPLEMENTED | Report and error analysis support interpretations with saved metrics and counts and avoid claiming causes. No signal-quality review or preprocessing ablation supports causal explanations. |
+| 26.1 — problem formulation, preprocessing, model choice, fair comparison, errors, criterion and limitations | PARTIALLY IMPLEMENTED | The report covers these areas; the remaining constraints are the single-model clause, non-identical historical beat sets, and unavailable Phase 1 success-criterion wording described above. |
+
 ### Remaining constraints
 
-- The official assessment file referred to as Sections 21–27 was not provided, so this repository evidence cannot certify criteria stated only in that document.
-- The editable `.pptx` remains incomplete because authoring was blocked by the available environment. The outline is ready to render in an environment with authorized PowerPoint automation or a suitable existing authoring library.
+- Section 27 and the Phase 1 approval/success-criterion wording were not included in the screenshots, so requirements appearing only there remain unverified.
+- Presentation quality, UI, and live demonstration were intentionally not addressed in this ML-only pass, per the user's instruction.
 - The historical Phase 1 artifacts remain outside the cleaned checkout; historical comparison numbers are documented but cannot be independently reproduced from a fresh clone.
 - F and Q remain severely underrepresented in DS1 fit (31 and 4 beats); RF misses both classes on DS2, and RF S recall is only 0.0579. These limitations must accompany presentation of aggregate accuracy.
 

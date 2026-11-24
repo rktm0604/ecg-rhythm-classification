@@ -93,7 +93,7 @@ The DS1 script never loads DS2 data. The evaluator runs once after the frozen DS
 
 The [final report](docs/phase2_final_report.md) presents Phase 2 as the primary experiment and Phase 4 as a separate causal experiment. The [compliance audit](docs/phase2_compliance_audit.md) maps requirements to repository evidence and records what remains unverified. The [RF investigation](docs/phase2_rf_improvement.md) documents the DS1-only search and why the existing RF was retained. The [presentation outline](docs/phase2_presentation_outline.md) contains a 12-slide plan with speaker prompts. An actual PowerPoint deck is not included: COM activation returned access denied, UI automation could not activate the PowerPoint window, and no PowerPoint authoring library was available. No placeholder `.pptx` was created.
 
-The official assessment document referred to as Sections 21–27 was not present in this repository. The compliance audit therefore cannot certify requirements that exist only in that missing source.
+The supplied rubric screenshots cover Phase 2 Sections 21–26. Section 27 and the Phase 1 approval/success-criterion wording are not shown; the [compliance audit](docs/phase2_compliance_audit.md) maps the visible ML criteria and states what remains unverifiable. Presentation, UI, and live demo work is deferred for now per the project owner's direction.
 
 ### EDA and assessment materials
 
