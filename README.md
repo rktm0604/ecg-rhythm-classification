@@ -28,7 +28,15 @@ RR features use consecutive annotation positions whose symbols map to these hear
 
 The existing record-wise DS1/DS2 split is retained; record 202 is excluded because it shares a subject with DS1 record 201. A deterministic 80/20 record-grouped split within DS1 provides the same fit and validation records for Random Forest, 1D-CNN, and the majority/RR-only baselines. RF candidate selection and CNN early stopping use DS1 validation only. DS2 is reserved for final reporting and is not used for feature selection, class-weight selection, thresholds, or model selection.
 
-The RF uses four RR features plus 30 sampled waveform values. The CNN uses the complete 200-sample waveform. The majority baseline and RR-only Logistic Regression use the same fit/validation split. A separate future causal experiment is required before making real-time claims.
+The RF uses four RR features plus 30 sampled waveform values. The CNN uses the complete 200-sample waveform. The majority baseline and RR-only Logistic Regression use the same fit/validation split.
+
+Phase 4 is a separate secondary causal experiment. It predicts at the annotated R-peak using only the current/past waveform and past RR intervals. Run it with:
+
+```powershell
+.\.venv\Scripts\python.exe artifacts\phase4_causal\train_eval_phase4.py
+```
+
+Its configuration, predictions, metrics, feature timing, and comparison with Phase 2 are stored in `artifacts/phase4_causal/`. The causal and offline/delayed experiments have different information cut-offs and should not be interpreted as identical tasks.
 
 ## Corrected Phase 2 outputs
 
