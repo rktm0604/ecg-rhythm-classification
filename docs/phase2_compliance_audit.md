@@ -121,7 +121,7 @@ Status labels: **IMPLEMENTED AND VERIFIED**, **PARTIALLY IMPLEMENTED**, **NOT IM
 
 Verification performed with the existing environment at `D:\Downloads\ecg project\.venv\Scripts\python.exe`:
 
-- `python -m unittest discover -s tests -v`: **25 tests passed**, including three tests for prediction-metric reproduction, classwise counts, recordwise scores, and traceable waveform metadata.
+- `python -m unittest discover -s tests -v`: the earlier audit recorded **25 tests passed**. The final verification below reruns the current complete suite.
 - `python -m compileall -q pipeline.py dataset_audit.py app.py artifacts\phase2_corrected\train_eval_phase2.py artifacts\phase4_causal\train_eval_phase4.py scripts tests`: **passed**.
 - Streamlit `AppTest.from_file('app.py').run()`: **0 exceptions**; Streamlit emitted only its expected bare-mode `ScriptRunContext` warning.
 - `git diff --check`: **passed**.
@@ -138,3 +138,34 @@ No model training or package installation occurred. Phase 2/4 model checkpoints,
 - Include or otherwise make accessible the historical Phase 1 baseline reference outputs if the instructor expects fresh-clone reproduction.
 - Turn the outline into a rendered deck if a slide deck is a required artifact.
 - Do not call the experiments real-time or clinical; Phase 2 uses future information and reference annotations supply beat locations.
+
+## F. Final ML documentation and verification update
+
+This final pass checked the current clean branch and existing saved experiments. It did not train or tune a model, change predictions, or modify Phase 2/Phase 4 experiment artifacts.
+
+### Additional documentation
+
+- The Phase 2 final report retains its 12 numbered sections and now includes an abstract and explicit project objectives. Its content covers dataset/mapping, exclusions and record split, extraction/features, DS1 EDA, models/training, baselines, validation/model selection, Phase 2 and Phase 4 metrics, error analysis, discussion, limitations and references.
+- `docs/ml_final_handover.md` documents model paths, ordered feature vectors, tensor shapes, label order, timing, output interpretation and constraints for the teammate's separately maintained UI/live demo.
+- `docs/phase2_presentation_outline.md` contains a 12-slide outline tied to verified metrics. An editable PowerPoint was not produced: PowerPoint COM launch returned `E_ACCESSDENIED`, native UI automation could not activate the window, and `python-pptx` is unavailable in the existing environment. No package was installed and no placeholder `.pptx` was created.
+- The README distinguishes verified reproduction of saved Phase 2/4 metrics and error analysis from historical Phase 1 comparisons that cannot be recreated from the cleaned checkout. MIT-BIH raw data is not included and must be acquired separately.
+
+### Current verification
+
+Using the existing interpreter at `D:\Downloads\ecg project\.venv\Scripts\python.exe` from the cleanup checkout:
+
+- `python -m unittest discover -s tests -v`: **29 tests passed**.
+- `python -m compileall -q pipeline.py dataset_audit.py app.py scripts artifacts tests`: passed in the final pass. `app.py` was compiled for syntax verification but was not edited.
+- `scripts/phase2_error_analysis.py --data-dir "D:\Downloads\ecg project\data\mitdb" --out "$env:TEMP\ecg_phase2_verification"`: completed without touching the checked-in analysis output folder. It independently recomputed DS2 metrics from saved Phase 2 predictions and labels and matched `results.json` exactly. RF macro-F1/accuracy were 0.385958/0.944409; CNN values were 0.285512/0.733497. The representative waveform examples were matched to actual annotations.
+- `artifacts/phase2_rf_improved/verify_rf_improved_ds2.py --out artifacts/phase2_rf_improved`: passed its independent recomputation for the frozen RF; record 232 accuracy was 0.219910 and present-class macro-F1 was 0.251609. This is evaluation reporting only; record 232 was not used for selection.
+- The test suite independently checks Phase 2 and Phase 4 aggregate/per-class metrics, confusion matrices, checkpoint/config consistency, prediction labels, and split separation. The saved outputs are therefore reproducible from the tracked predictions without retraining.
+- Compilation found no syntax errors. Python source scans found no hard-coded machine-specific absolute paths; scripts construct paths relative to their source or accept data/output arguments. `artifacts/phase2_corrected/eda/eda_summary.json` does retain the original machine's absolute source-data/checkpoint provenance strings; they are descriptive metadata and are not used by the pipeline.
+- Required Python dependencies are pinned in `requirements.txt`; the existing environment reports Python 3.11.9 and installed versions matching the listed pins. No package was installed or upgraded.
+
+### Remaining constraints
+
+- The official assessment file referred to as Sections 21–27 was not provided, so this repository evidence cannot certify criteria stated only in that document.
+- The editable `.pptx` remains incomplete because authoring was blocked by the available environment. The outline is ready to render in an environment with authorized PowerPoint automation or a suitable existing authoring library.
+- The historical Phase 1 artifacts remain outside the cleaned checkout; historical comparison numbers are documented but cannot be independently reproduced from a fresh clone.
+- F and Q remain severely underrepresented in DS1 fit (31 and 4 beats); RF misses both classes on DS2, and RF S recall is only 0.0579. These limitations must accompany presentation of aggregate accuracy.
+

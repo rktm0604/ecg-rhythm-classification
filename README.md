@@ -1,6 +1,6 @@
 # ECG Rhythm Classification
 
-This repository contains a corrected, five-class AAMI heartbeat-classification research project using the **MIT-BIH Arrhythmia Database**. It includes a primary offline/delayed experiment (Phase 2), a secondary strictly causal experiment (Phase 4), saved model outputs, automated tests, and a Streamlit dashboard.
+This repository contains a corrected, five-class AAMI heartbeat-classification research project using the **MIT-BIH Arrhythmia Database**. It includes a primary offline/delayed experiment (Phase 2), a secondary strictly causal experiment (Phase 4), saved model outputs, automated tests, and academic documentation. A Streamlit results dashboard is present; UI and live-demo ownership is separate from this ML project work.
 
 This is a research prototype, not a medical device. It does not detect beats automatically: reference annotations provide the beat locations and labels.
 
@@ -22,12 +22,13 @@ docs/phase2_error_analysis.md        Detailed DS2 error and record-wise analysis
 docs/phase2_rf_improvement.md        DS1-only RF investigation and final DS2 comparison
 docs/phase2_compliance_audit.md      Requirement-level audit and remaining gaps
 docs/phase2_presentation_outline.md  Presentation outline and speaker prompts
+docs/ml_final_handover.md             Model input/output and artifact handover for UI teammate
 artifacts/phase2_corrected/          Primary offline/delayed experiment and saved outputs
 artifacts/phase2_rf_improved/       Separate DS1 RF investigation and one-shot DS2 evaluation
 artifacts/phase4_causal/             Secondary causal experiment and saved outputs
 ```
 
-The Phase 2 and Phase 4 directories each contain their training script, experiment configuration, predictions, metrics and RF/CNN/baseline checkpoints. Phase 2's reproducible error-analysis tables and figures are in `artifacts/phase2_corrected/error_analysis/`; see [the analysis report](docs/phase2_error_analysis.md). Phase 4 also contains `feature_timing.md` and `comparison_report.md`. The causal test lives in `tests/` so the documented test command discovers it.
+The Phase 2 and Phase 4 directories each contain their training script, experiment configuration, predictions, metrics and RF/CNN/baseline checkpoints. Phase 2's reproducible error-analysis tables and figures are in `artifacts/phase2_corrected/error_analysis/`; see [the analysis report](docs/phase2_error_analysis.md). Phase 4 also contains `feature_timing.md` and `comparison_report.md`. The causal test lives in `tests/` so the documented test command discovers it. The [ML handover](docs/ml_final_handover.md) records checkpoint paths, feature order, tensor shapes, timing, and output interpretation.
 
 ## AAMI annotation mapping
 
@@ -45,7 +46,7 @@ Only annotations in this mapping count as heartbeat positions for interval endpo
 
 ## Data preparation and corrected extraction
 
-MIT-BIH data is **not included** in this repository. Obtain it separately from PhysioNet and place the extracted files under `data/mitdb/`, beside `pipeline.py`. Each record needs the WFDB header, signal and annotation files (normally `.hea`, `.dat`, and `.atr`). The pipeline reads local files and does not download the database. `.gitignore` excludes `data/mitdb/` so raw recordings are not committed.
+MIT-BIH data is **not included** in this repository. Obtain it separately from the [PhysioNet MIT-BIH Arrhythmia Database](https://physionet.org/content/mitdb/1.0.0/) and place the extracted files under `data/mitdb/`, beside `pipeline.py`. Each record needs the WFDB header, signal and annotation files (normally `.hea`, `.dat`, and `.atr`). The pipeline reads local files and does not download the database. `.gitignore` excludes `data/mitdb/` so raw recordings are not committed.
 
 `pipeline.py` selects the MLII channel when its header label is available (otherwise it reports a warning and uses channel 0). Phase 2 extracts a 200-sample window from 90 samples before through 109 samples after the annotated R-peak. It excludes beats without both a previous and a following valid heartbeat, beats with an out-of-record or non-finite waveform, and beats with invalid RR intervals. The RR values are measured in samples at 360 Hz.
 
@@ -63,7 +64,7 @@ Run the audit only when the local MIT-BIH data is available. The output director
 
 ## Splits and model methodology
 
-The record-wise split is stored with each experiment. DS1 contains 23 training records, and record 202 is excluded because it shares a subject with DS1 record 201. A deterministic, record-grouped 80/20 split within DS1 produces 18 fit records and 5 validation records. **Both phases use the same records**:
+The record-wise split is stored with each experiment. DS1 contains 23 development records; record 202 is excluded because it shares a subject with DS1 record 201, and paced records 102, 104, 107, and 217 are excluded. Record 121 is included in this project's allocation, which is not claimed to be an exact standard benchmark split. A deterministic, record-grouped 80/20 split within DS1 produces 18 fit records and 5 validation records. **Both phases use the same records**:
 
 - DS1 fit: `106, 108, 109, 112, 114, 115, 116, 121, 122, 124, 201, 203, 207, 209, 215, 220, 223, 230`
 - DS1 validation: `101, 118, 119, 205, 208`
@@ -88,7 +89,13 @@ $studyOut = "artifacts\phase2_rf_improved_reproduction"
 
 The DS1 script never loads DS2 data. The evaluator runs once after the frozen DS1 configuration exists and refuses to overwrite outputs; the verification script recomputes metrics from saved predictions without model inference.
 
-## EDA and assessment materials
+## Reports and assessment materials
+
+The [final report](docs/phase2_final_report.md) presents Phase 2 as the primary experiment and Phase 4 as a separate causal experiment. The [compliance audit](docs/phase2_compliance_audit.md) maps requirements to repository evidence and records what remains unverified. The [RF investigation](docs/phase2_rf_improvement.md) documents the DS1-only search and why the existing RF was retained. The [presentation outline](docs/phase2_presentation_outline.md) contains a 12-slide plan with speaker prompts. An actual PowerPoint deck is not included: COM activation returned access denied, UI automation could not activate the PowerPoint window, and no PowerPoint authoring library was available. No placeholder `.pptx` was created.
+
+The official assessment document referred to as Sections 21–27 was not present in this repository. The compliance audit therefore cannot certify requirements that exist only in that missing source.
+
+### EDA and assessment materials
 
 Run the DS1-only exploratory analysis when MIT-BIH is available locally:
 
@@ -140,7 +147,7 @@ These are not identical tasks: the models receive different information before p
 
 ## Installation and commands
 
-The checked-in direct dependency pins were verified against the environment used for this project. Python 3.11 is the tested interpreter. From the repository root in PowerShell:
+Python 3.11 is the tested interpreter. The direct dependencies are pinned in `requirements.txt`; the checked project environment reported versions matching those pins. From the repository root in PowerShell, create a fresh environment and install those dependencies, or use an already prepared environment:
 
 ```powershell
 py -3.11 -m venv .venv
@@ -149,33 +156,36 @@ py -3.11 -m venv .venv
 .\.venv\Scripts\streamlit.exe run app.py
 ```
 
-The test suite uses synthetic data and saved artifacts; it does not require MIT-BIH raw data. To run the two experiments again, ensure the dataset is in place, then run:
+The test suite uses synthetic data and saved artifacts; it does not require MIT-BIH raw data. Dataset-backed runs expect WFDB `.hea`, `.dat`, and `.atr` files for each record under `data/mitdb/`. No raw ECG files are tracked.
 
-To reproduce the Phase 2 error analysis from existing DS2 predictions without retraining, run:
+To reproduce the Phase 2 error analysis from existing DS2 predictions without retraining (and regenerate the representative waveform figure), run:
 
 ```powershell
 .\.venv\Scripts\python.exe scripts\phase2_error_analysis.py --data-dir data\mitdb
 ```
 
-The script recomputes aggregate and record-wise metrics from `artifacts/phase2_corrected/predictions.npz` and verifies them against the saved `results.json`. Raw MIT-BIH files are needed only for the representative waveform figure. Outputs go to `artifacts/phase2_corrected/error_analysis/`; model artifacts and predictions are read-only inputs.
+The script recomputes aggregate and record-wise metrics from `artifacts/phase2_corrected/predictions.npz` and verifies them against the saved `results.json`. Raw MIT-BIH files are needed only for the representative waveform figure. Outputs go to `artifacts/phase2_corrected/error_analysis/`; model artifacts and predictions are read-only inputs. To preserve existing analysis outputs, select a new output directory with `--out`.
 
-The following commands **retrain** models and are not needed to reproduce the error analysis:
+To run the training scripts again when the dataset is present:
 
 ```powershell
 .\.venv\Scripts\python.exe artifacts\phase2_corrected\train_eval_phase2.py
 .\.venv\Scripts\python.exe artifacts\phase4_causal\train_eval_phase4.py
 ```
 
-Each training script writes checkpoints, predictions, configuration and results into its own artifact directory. **Running a training script overwrites that phase's existing output files.** Back up the directory or use a separate branch/worktree before reproducing if you need to preserve the checked-in results. Do not use DS2 to choose model settings.
+Training is not needed to reproduce reported metrics and the scripts write into their existing artifact directories. Running them will replace files there. Use a copy or a separate checkout and a separate output-aware script before any retraining; do not use DS2 for model selection.
+
+Each training script writes checkpoints, predictions, configuration and results into its own artifact directory. **Running a training script overwrites that phase's existing output files.** Training is optional and is not needed to reproduce the documented metric tables or error analysis. Do not use DS2 to choose model settings.
 
 ## Dashboard and saved artifacts
 
-Launch with `streamlit run app.py` from the repository root. The dashboard loads Phase 2 predictions and metrics from `artifacts/phase2_corrected/` and loads the Phase 4 DS2 comparison from `artifacts/phase4_causal/`. It presents the five labels in `N, S, V, F, Q` order and does not use legacy binary artifacts.
+The existing Streamlit dashboard loads Phase 2 predictions and metrics from `artifacts/phase2_corrected/` and loads the Phase 4 DS2 comparison from `artifacts/phase4_causal/`. It presents the five labels in `N, S, V, F, Q` order and does not use legacy binary artifacts. The UI/live-demo workflow is maintained separately; see the [ML handover](docs/ml_final_handover.md) for model contracts and limitations.
 
-`experiment_config.json` records the data split, extraction design, selected RF settings and CNN epoch/weights. `predictions.npz` stores validation and DS2 labels, predictions and probabilities. `results.json` stores per-class reports and confusion matrices. Checkpoint files are `random_forest.joblib`, `rr_logistic_baseline.joblib`, and `cnn.pt` in each experiment directory.
+`experiment_config.json` records the data split, extraction design, selected RF settings and CNN epoch/weights. `predictions.npz` stores validation and DS2 labels, predictions and scores. `results.json` stores per-class reports and confusion matrices. Checkpoint files are `random_forest.joblib`, `rr_logistic_baseline.joblib`, and `cnn.pt` in each experiment directory. The RF `predict_proba` values are vote fractions, not calibrated clinical probabilities.
 
 ## Limitations and citation
 
 MIT-BIH has substantial class imbalance and does not represent population prevalence. In particular, the very small F and Q fit/test supports make those estimates unreliable. Annotated beat locations are assumed, so automatic beat detection is outside this experiment. Phase 2 uses future information; Phase 4 is causal only with respect to the annotated R-peak and still assumes that R-peak annotation is available at prediction time. Neither experiment is intended for diagnosis or treatment.
 
 Moody GB, Mark RG. The impact of the MIT-BIH Arrhythmia Database. *IEEE Engineering in Medicine and Biology Magazine*. 2001;20(3):45–50. MIT-BIH Arrhythmia Database, PhysioNet, DOI: 10.13026/C2F305.
+
