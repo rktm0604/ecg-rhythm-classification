@@ -14,11 +14,17 @@ tests/test_pipeline_rr.py           RR, annotation, boundary and audit parity te
 tests/test_phase2_results.py        Phase 2 metrics/checkpoint/split consistency tests
 tests/test_phase4_results.py        Phase 4 metrics/checkpoint/comparison consistency tests
 tests/test_causality.py             Causal feature perturbation tests
+scripts/phase2_eda.py               DS1-only descriptive EDA; does not fit or tune models
+scripts/phase2_error_analysis.py    Post-hoc DS2 analysis from frozen predictions; no training
+docs/phase2_final_report.md          Final report with the requested 12 sections
+docs/phase2_error_analysis.md        Detailed DS2 error and record-wise analysis
+docs/phase2_compliance_audit.md      Requirement-level audit and remaining gaps
+docs/phase2_presentation_outline.md  Presentation outline and speaker prompts
 artifacts/phase2_corrected/          Primary offline/delayed experiment and saved outputs
 artifacts/phase4_causal/             Secondary causal experiment and saved outputs
 ```
 
-The Phase 2 and Phase 4 directories each contain their training script, experiment configuration, predictions, metrics and RF/CNN/baseline checkpoints. Phase 4 also contains `feature_timing.md` and `comparison_report.md`. The causal test lives in `tests/` so the documented test command discovers it.
+The Phase 2 and Phase 4 directories each contain their training script, experiment configuration, predictions, metrics and RF/CNN/baseline checkpoints. Phase 2's reproducible error-analysis tables and figures are in `artifacts/phase2_corrected/error_analysis/`; see [the analysis report](docs/phase2_error_analysis.md). Phase 4 also contains `feature_timing.md` and `comparison_report.md`. The causal test lives in `tests/` so the documented test command discovers it.
 
 ## AAMI annotation mapping
 
@@ -61,6 +67,18 @@ The record-wise split is stored with each experiment. DS1 contains 23 training r
 - DS2 final test: `100, 103, 105, 111, 113, 117, 123, 200, 210, 212, 213, 214, 219, 221, 222, 228, 231, 232, 233, 234`
 
 RF candidates and CNN early stopping are selected using DS1 validation only. Class weights are derived from DS1 fit data or are fixed candidate values. DS2 is reserved for final evaluation and is not used for model selection, feature selection, class-weight selection, or thresholds. The majority and RR-only Logistic Regression baselines use the same fit/validation records. The RF consumes engineered RR values and 30 evenly spaced waveform values; the 1D-CNN consumes the complete 200-sample waveform. They share the same examples and partitions, while their input representations differ.
+
+The **Random Forest is presented as the primary selected model** because it had the higher DS1 validation macro-F1 (0.3992 vs 0.3717 for the CNN). The 1D-CNN is retained as an additional architecture comparison. The RF's bounded validation search uses 300 trees, `max_depth` in `{None, 24}`, `min_samples_leaf` in `{1, 3}`, and three class-weight choices. The CNN uses three Conv1D blocks (32/64/128 channels; kernel sizes 9/7/5), batch normalization, ReLU, max pooling after the first two blocks, adaptive average pooling, dropout 0.35, and a five-class linear output. Training uses AdamW (lr 0.001, weight decay 0.0001), weighted cross-entropy, batch size 256, up to 35 epochs, and patience 7 on DS1 validation macro-F1. The saved best epoch is 18. Full details and limitations are in [the final report](docs/phase2_final_report.md).
+
+## EDA and assessment materials
+
+Run the DS1-only exploratory analysis when MIT-BIH is available locally:
+
+```powershell
+python scripts/phase2_eda.py --data-dir data/mitdb
+```
+
+It saves five plots and an `eda_summary.json` under `artifacts/phase2_corrected/eda/`. It loads DS1 only and does not change the saved experiment results. The [compliance audit](docs/phase2_compliance_audit.md) records requirement status and unresolved gaps. The [presentation outline](docs/phase2_presentation_outline.md) is speaker-ready content, not a rendered slide deck.
 
 ### Phase 2 — primary offline/delayed
 
@@ -114,6 +132,16 @@ py -3.11 -m venv .venv
 ```
 
 The test suite uses synthetic data and saved artifacts; it does not require MIT-BIH raw data. To run the two experiments again, ensure the dataset is in place, then run:
+
+To reproduce the Phase 2 error analysis from existing DS2 predictions without retraining, run:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\phase2_error_analysis.py --data-dir data\mitdb
+```
+
+The script recomputes aggregate and record-wise metrics from `artifacts/phase2_corrected/predictions.npz` and verifies them against the saved `results.json`. Raw MIT-BIH files are needed only for the representative waveform figure. Outputs go to `artifacts/phase2_corrected/error_analysis/`; model artifacts and predictions are read-only inputs.
+
+The following commands **retrain** models and are not needed to reproduce the error analysis:
 
 ```powershell
 .\.venv\Scripts\python.exe artifacts\phase2_corrected\train_eval_phase2.py
